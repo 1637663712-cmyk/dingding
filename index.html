@@ -3,312 +3,307 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>丁丁的小世界 · 白色雪纳瑞</title>
+<title>丁丁的小世界</title>
 <style>
-:root{--cream:#FDFAF5;--linen:#F5EFE6;--sage:#8CA89C;--sage-light:#E5EDE8;--sage-pale:#F2F7F4;--terracotta:#C4956A;--terracotta-light:#EDD9C8;--warm-gray:#8B7E74;--warm-gray-light:#B8AFA6;--dark:#3C3633;--charcoal:#2C2C2C;--border:#E6DDD2;--border-light:#F0E9DF;--shadow-xs:0 1px 4px rgba(60,54,51,0.04);--shadow-sm:0 2px 12px rgba(60,54,51,0.06);--shadow-md:0 8px 30px rgba(60,54,51,0.08);--shadow-lg:0 16px 48px rgba(60,54,51,0.10);--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--font-cn:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;--font-en:'Segoe UI','Helvetica Neue','Arial',sans-serif;--transition:0.35s cubic-bezier(0.25,0.1,0.25,1)}
+:root{--cream:#FDFAF5;--sage:#8CA89C;--sage-pale:#F2F7F4;--terracotta:#C4956A;--terracotta-light:#EDD9C8;--warm-gray:#8B7E74;--warm-light:#B8AFA6;--dark:#3C3633;--charcoal:#2C2C2C;--border:#E6DDD2;--border-light:#F0E9DF;--radius:14px;--font-cn:'PingFang SC','Microsoft YaHei',sans-serif;--font-en:'Segoe UI','Arial',sans-serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.container{max-width:1120px;margin:0 auto;padding:0 28px}
-.section-title{text-align:center;margin-bottom:16px}
-.section-title-cn{display:block;font-size:2rem;font-weight:600;color:var(--charcoal);letter-spacing:.06em}
-.section-title-cn::after{content:'';display:block;width:36px;height:2px;background:var(--terracotta);margin:14px auto 0;border-radius:1px}
-.section-title-en{display:block;font-family:var(--font-en);font-size:.8rem;font-weight:400;color:var(--warm-gray-light);text-transform:uppercase;letter-spacing:.25em;margin-top:6px}
-.section-subtitle{text-align:center;font-size:.95rem;color:var(--warm-gray);margin-bottom:56px}
+body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-height:1.8;overflow-x:hidden}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
 
-/* ── 卡通雪纳瑞头像 ── */
-.schnauzer-icon{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;overflow:hidden}
-.schnauzer-icon svg{width:100%;height:100%}
+/* ── 卡通雪纳瑞 SVG 图标 ── */
+.schnauzer{display:inline-flex;align-items:center;justify-content:center}
+.schnauzer svg{width:100%;height:100%}
 
 /* ── 导航 ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:var(--transition)}
-.nav.scrolled{background:rgba(253,250,245,0.78);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);box-shadow:0 1px 0 rgba(60,54,51,0.06)}
-.nav-inner{max-width:1120px;margin:0 auto;padding:0 28px;height:72px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-cn);font-size:1.25rem;font-weight:600;color:var(--charcoal);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
-.nav-logo .schnauzer-icon{width:36px;height:36px;background:var(--terracotta-light)}
-.nav-links{list-style:none;display:flex;gap:36px}
-.nav-links a{font-family:var(--font-cn);font-size:.9rem;color:var(--warm-gray);text-decoration:none;position:relative;transition:color .3s;padding:4px 0}
-.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--terracotta);border-radius:1px;transform:scaleX(0);transition:transform .3s}
-.nav-links a:hover{color:var(--dark)}.nav-links a:hover::after{transform:scaleX(1)}
-.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--charcoal);border-radius:1px;transition:var(--transition)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .35s}
+.nav.scrolled{background:rgba(253,250,245,0.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 0 rgba(60,54,51,0.06)}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:1.2rem;font-weight:600;color:var(--charcoal);text-decoration:none;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.nav-logo .schnauzer{width:36px;height:36px}
+.nav-links{list-style:none;display:flex;gap:32px}
+.nav-links a{font-size:.88rem;color:var(--warm-gray);text-decoration:none;transition:color .3s}
+.nav-links a:hover{color:var(--dark)}
 
 /* ── Hero ── */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:120px 48px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 800px 500px at 80% 20%,rgba(140,168,156,0.08) 0%,transparent 70%),radial-gradient(ellipse 600px 600px at 10% 80%,rgba(196,149,106,0.06) 0%,transparent 60%),linear-gradient(170deg,#FDFAF5 0%,#F6F0E6 40%,#FDFAF5 100%)}
-.hero-content{flex:1;max-width:520px;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid var(--border-light);border-radius:40px;padding:6px 18px;font-family:var(--font-en);font-size:.82rem;color:var(--warm-gray);letter-spacing:.06em;margin-bottom:28px}
-.hero-dot{color:var(--sage)}.hero-title{margin-bottom:28px}
-.hero-title-main{display:block;font-size:5.5rem;font-weight:700;color:var(--charcoal);line-height:1.08;letter-spacing:.05em}
-.hero-title-sub{display:block;font-family:var(--font-en);font-size:1rem;font-weight:300;color:var(--warm-gray-light);letter-spacing:.4em;text-transform:uppercase;margin-top:2px}
-.hero-desc{font-size:1.1rem;color:var(--warm-gray);line-height:2.1}
-.hero-actions{display:flex;gap:16px;margin-top:40px}
-.hero-scroll{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--warm-gray-light);animation:floatDown 2.4s ease-in-out infinite;cursor:pointer;text-decoration:none;padding:8px 0}
-@keyframes floatDown{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
-.hero-portrait{flex-shrink:0;z-index:1;margin-left:64px}
-.portrait-frame{width:340px;height:420px;border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 8px 32px rgba(60,54,51,0.10),0 2px 8px rgba(60,54,51,0.06);background:var(--linen);position:relative}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:120px 48px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 600px 400px at 75% 25%,rgba(140,168,156,0.07) 0%,transparent 70%),linear-gradient(170deg,#FDFAF5 0%,#F6F0E6 40%,#FDFAF5 100%)}
+.hero-content{flex:1;max-width:500px;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid var(--border-light);border-radius:40px;padding:6px 18px;font-size:.8rem;color:var(--warm-gray);margin-bottom:24px}
+.hero-title-main{display:block;font-size:5rem;font-weight:700;color:var(--charcoal);line-height:1.08;letter-spacing:.05em}
+.hero-title-sub{display:block;font-family:var(--font-en);font-size:.9rem;font-weight:300;color:var(--warm-light);letter-spacing:.4em;text-transform:uppercase;margin-top:4px}
+.hero-desc{font-size:1.05rem;color:var(--warm-gray);line-height:2.1;margin:24px 0 36px}
+.hero-scroll{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;color:var(--warm-light);animation:float 2.4s ease-in-out infinite;cursor:pointer;text-decoration:none}
+@keyframes float{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
+.hero-portrait{flex-shrink:0;z-index:1;margin-left:56px}
+.portrait-frame{width:320px;height:400px;border-radius:28px;overflow:hidden;box-shadow:0 8px 32px rgba(60,54,51,0.1);background:var(--cream)}
 .portrait-frame img{width:100%;height:100%;object-fit:cover}
 
 /* ── About ── */
-.about{padding:120px 0;background:var(--cream);position:relative}
+.about{padding:100px 0;background:var(--cream);position:relative}
 .about::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
-.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:72px}
-.about-card{background:#FFF;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:36px 20px 28px;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
-.about-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:32px;height:3px;border-radius:0 0 3px 3px;transition:width .3s}
-.about-card:nth-child(1)::before{background:var(--terracotta)}.about-card:nth-child(2)::before{background:var(--sage)}.about-card:nth-child(3)::before{background:#D4A99A}.about-card:nth-child(4)::before{background:#B8AFA6}.about-card:nth-child(5)::before{background:var(--sage)}.about-card:nth-child(6)::before{background:var(--terracotta)}.about-card:nth-child(7)::before{background:#D4A99A}.about-card:nth-child(8)::before{background:#B8AFA6}
-.about-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:transparent}.about-card:hover::before{width:48px}
-.about-card .schnauzer-icon{width:48px;height:48px;margin:0 auto 14px;background:transparent}
-.about-icon{font-size:2rem;margin-bottom:14px}.about-card h3{font-size:.78rem;color:var(--warm-gray-light);font-weight:400;margin-bottom:10px;text-transform:uppercase;letter-spacing:.12em}
-.about-card p{font-size:1rem;color:var(--charcoal);font-weight:500}.about-note{font-size:.82rem!important;color:var(--warm-gray-light)!important;font-weight:400!important;margin-top:6px}
-.about-story{max-width:660px;margin:0 auto;text-align:center}.about-story p{font-size:1.02rem;color:var(--warm-gray);line-height:2.1;margin-bottom:1.3em}
+.section-title{text-align:center;margin-bottom:12px;font-size:1.8rem;font-weight:600;color:var(--charcoal)}
+.section-title::after{content:'';display:block;width:32px;height:2px;background:var(--terracotta);margin:12px auto 0}
+.section-sub{text-align:center;font-size:.88rem;color:var(--warm-light);margin-bottom:48px}
+.about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:60px}
+.about-card{background:#FFF;border:1px solid var(--border-light);border-radius:var(--radius);padding:32px 16px 24px;text-align:center;transition:all .35s}
+.about-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(60,54,51,0.07)}
+.about-icon{font-size:1.8rem;margin-bottom:10px}.about-card h3{font-size:.75rem;color:var(--warm-light);letter-spacing:.1em;margin-bottom:8px}
+.about-card p{font-size:.95rem;color:var(--charcoal);font-weight:500}.about-note{font-size:.78rem!important;color:var(--warm-light)!important;font-weight:400!important;margin-top:4px}
+.about-story{max-width:620px;margin:0 auto;text-align:center;font-size:.98rem;color:var(--warm-gray);line-height:2.1}
 
-/* ── Gallery 错落布局 ── */
-.gallery{padding:120px 0;background:var(--sage-pale)}
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:14px}
-.gallery-item{border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;position:relative;background:var(--linen);transition:var(--transition);box-shadow:var(--shadow-xs)}
-.gallery-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.gallery-item img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .6s ease}
-.gallery-item:hover img{transform:scale(1.04)}
-.gallery-item-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(44,44,44,0.55));padding:36px 16px 16px;color:#FFF;opacity:0;transition:opacity .35s}
-.gallery-item:hover .gallery-item-overlay{opacity:1}
-.gallery-item-overlay h4{font-size:.9rem;font-weight:500;margin-bottom:2px}
-/* 不同尺寸 */
-.gallery-item.featured{grid-column:span 2;grid-row:span 2}
-.gallery-item.wide{grid-column:span 2}
-.gallery-item.tall{grid-row:span 2}
+/* ── Diary Timeline ── */
+.diary{padding:100px 0;background:var(--sage-pale)}
+.diary-timeline{position:relative;max-width:800px;margin:0 auto}
+.diary-timeline::before{content:'';position:absolute;top:0;bottom:0;left:28px;width:1.5px;background:linear-gradient(180deg,var(--border),transparent 90%)}
+.diary-entry{position:relative;padding-left:64px;margin-bottom:72px}
+.diary-entry::before{content:'';position:absolute;left:22px;top:6px;width:14px;height:14px;border-radius:50%;border:2.5px solid var(--terracotta);background:var(--sage-pale);box-shadow:0 0 0 5px var(--terracotta-light);z-index:1}
+.diary-date{font-family:var(--font-en);font-size:.78rem;color:var(--warm-light);letter-spacing:.06em;margin-bottom:6px}
+.diary-entry h3{font-size:1.2rem;color:var(--charcoal);margin-bottom:8px}
+.diary-entry .diary-body{font-size:.93rem;color:var(--warm-gray);line-height:2;margin-bottom:16px}
+.diary-entry .diary-photo{border-radius:12px;overflow:hidden;max-width:100%;box-shadow:0 4px 16px rgba(60,54,51,0.08)}
+.diary-entry .diary-photo img{width:100%;display:block;cursor:pointer;transition:transform .5s}
+.diary-entry .diary-photo img:hover{transform:scale(1.02)}
+.diary-mood{display:inline-block;padding:3px 14px;background:rgba(140,168,156,0.15);color:var(--sage);border-radius:20px;font-size:.75rem;font-weight:500;margin-bottom:14px}
 
 /* ── Lightbox ── */
-.lightbox{position:fixed;inset:0;z-index:200;background:rgba(28,28,28,0.95);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
-.lightbox.active{opacity:1;pointer-events:all}
-.lightbox-close{position:absolute;top:28px;right:36px;background:none;border:none;color:#FFF;font-size:2.4rem;cursor:pointer;opacity:.8;transition:opacity .3s;z-index:10}
-.lightbox-close:hover{opacity:.5}
-.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#FFF;font-size:2rem;width:48px;height:48px;border-radius:50%;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center;z-index:10}
-.lightbox-prev:hover,.lightbox-next:hover{background:rgba(255,255,255,0.18)}.lightbox-prev{left:28px}.lightbox-next{right:28px}
-.lightbox-content{max-width:85vw;max-height:85vh;text-align:center}
-.lightbox-content img{max-width:100%;max-height:65vh;border-radius:8px;box-shadow:0 24px 64px rgba(60,54,51,0.12);object-fit:contain;transition:opacity .25s}
-.lightbox-info{margin-top:24px;color:#FFF}.lightbox-info h3{font-size:1.3rem;font-weight:500;margin-bottom:6px}
-
-/* ── Diary ── */
-.diary{padding:120px 0;background:var(--cream)}.diary-timeline{position:relative;max-width:640px;margin:0 auto}
-.diary-timeline::before{content:'';position:absolute;top:0;bottom:0;left:20px;width:1.5px;background:linear-gradient(180deg,var(--border),var(--border-light),var(--border));border-radius:1px}
-.diary-entry{position:relative;padding-left:56px;margin-bottom:56px}.diary-entry::before{content:'';position:absolute;left:14px;top:8px;width:13px;height:13px;border-radius:50%;border:2.5px solid var(--terracotta);background:var(--cream);box-shadow:0 0 0 5px var(--terracotta-light);transition:transform .3s,background .3s}
-.diary-entry:hover::before{transform:scale(1.3);background:var(--terracotta)}.diary-date{font-family:var(--font-en);font-size:.82rem;color:var(--warm-gray-light);letter-spacing:.08em;margin-bottom:8px}
-.diary-entry h3{font-size:1.15rem;color:var(--charcoal);margin-bottom:10px;font-weight:600}.diary-entry p{font-size:.95rem;color:var(--warm-gray);line-height:2}
-.diary-mood{display:inline-block;margin-top:12px;padding:4px 16px;background:var(--sage-light);color:var(--sage);border-radius:20px;font-size:.78rem;font-weight:500}
-.diary-photo-ref{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:.78rem;color:var(--terracotta);opacity:.7}
+.lightbox{position:fixed;inset:0;z-index:200;background:rgba(20,20,20,0.94);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.lightbox.on{opacity:1;pointer-events:all}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;box-shadow:0 16px 48px rgba(0,0,0,0.3)}
+.lightbox-close{position:absolute;top:24px;right:32px;background:none;border:none;color:#FFF;font-size:2.2rem;cursor:pointer;opacity:.7;z-index:10}
+.lightbox-close:hover{opacity:.4}
 
 /* ── Moments ── */
-.moments{padding:120px 0;background:var(--sage-pale)}.moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.moment-card{padding:36px 28px;background:#FFF;border:1px solid var(--border-light);border-radius:var(--radius-md);position:relative;transition:var(--transition);overflow:hidden}
-.moment-card::before{content:'';position:absolute;left:0;top:24px;bottom:24px;width:2px;border-radius:1px;background:var(--terracotta-light);transition:background .3s}
-.moment-card:nth-child(even)::before{background:var(--sage-light)}.moment-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:transparent}
-.moment-card:hover::before{background:var(--terracotta)}.moment-card:nth-child(even):hover::before{background:var(--sage)}
-.moment-number{font-family:var(--font-en);font-size:2.2rem;color:var(--border);font-weight:300;display:block;margin-bottom:16px;line-height:1;transition:color .3s}
-.moment-card:hover .moment-number{color:var(--terracotta-light)}.moment-card p{font-size:.93rem;color:var(--warm-gray);line-height:1.9;position:relative;z-index:1}
+.moments{padding:100px 0;background:var(--cream)}.moments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.moment-card{padding:32px 24px;background:#FFF;border:1px solid var(--border-light);border-radius:var(--radius);transition:all .35s;position:relative}
+.moment-card::before{content:'';position:absolute;left:0;top:20px;bottom:20px;width:2px;background:var(--terracotta-light)}
+.moment-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(60,54,51,0.07)}
+.moment-number{display:block;font-family:var(--font-en);font-size:1.8rem;color:var(--border);margin-bottom:12px}
+.moment-card p{font-size:.9rem;color:var(--warm-gray);line-height:1.9}
 
 /* ── Footer ── */
-.footer{padding:72px 0 32px;background:var(--charcoal);color:rgba(255,255,255,0.65);position:relative;overflow:hidden}
-.footer::before{content:'';position:absolute;top:-60px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(140,168,156,0.1) 0%,transparent 70%);pointer-events:none}
-.footer-content{display:flex;align-items:center;justify-content:space-between;margin-bottom:52px;position:relative;z-index:1}
-.footer-brand{text-align:left}
-.footer-logo .schnauzer-icon{width:44px;height:44px;background:rgba(255,255,255,0.08);margin-bottom:12px}
-.footer-brand h3{font-size:1.2rem;color:#FFF;font-weight:500;margin-bottom:4px}.footer-brand p{font-size:.85rem;font-family:var(--font-en);opacity:.45}
-.footer-quote p{font-size:.95rem;line-height:2;text-align:right;font-style:italic;opacity:.55}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;text-align:center;font-size:.8rem;opacity:.4;font-family:var(--font-en);letter-spacing:.04em}
+.footer{padding:56px 0 28px;background:var(--charcoal);color:rgba(255,255,255,0.6);text-align:center}
+.footer .schnauzer{width:40px;height:40px;margin:0 auto 12px}
+.footer h3{font-size:1.1rem;color:#FFF;margin-bottom:4px}.footer p{font-size:.8rem;opacity:.5}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.07);margin-top:32px;padding-top:20px;font-size:.75rem;opacity:.35}
 
-/* ── Back to top ── */
-.back-to-top{position:fixed;bottom:32px;right:32px;width:44px;height:44px;border-radius:50%;background:#FFF;border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;z-index:50;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:all .3s;color:var(--warm-gray)}
-.back-to-top.visible{opacity:1;pointer-events:all}.back-to-top:hover{background:var(--charcoal);color:#FFF;border-color:var(--charcoal)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(0.22,0.1,0.22,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+/* ── Admin Panel ── */
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.admin-overlay.on{opacity:1;pointer-events:all}
+.admin-panel{background:#FFF;border-radius:20px;padding:36px;max-width:600px;width:90%;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
+.admin-panel h2{font-size:1.3rem;margin-bottom:20px;text-align:center}
+.admin-panel label{display:block;font-size:.8rem;color:var(--warm-gray);margin-bottom:4px;margin-top:14px}
+.admin-panel input,.admin-panel textarea,.admin-panel select{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:.9rem;font-family:inherit;background:var(--cream);margin-bottom:4px}
+.admin-panel textarea{min-height:80px;resize:vertical}
+.admin-panel .dropzone{border:2px dashed var(--border);border-radius:12px;padding:36px;text-align:center;cursor:pointer;transition:all .3s;background:var(--cream)}
+.admin-panel .dropzone:hover{border-color:var(--terracotta);background:var(--terracotta-light)}
+.admin-panel .dropzone .dz-icon{font-size:2rem;margin-bottom:8px}
+.admin-panel .preview-img{max-width:100%;max-height:160px;border-radius:8px;margin-top:10px;display:none}
+.admin-panel .btn-row{display:flex;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 22px;border:none;border-radius:10px;font-size:.9rem;font-family:inherit;cursor:pointer;transition:all .3s;font-weight:500}
+.btn-primary{background:var(--terracotta);color:#FFF}.btn-primary:hover{background:#A0724A}
+.btn-outline{background:#FFF;color:var(--warm-gray);border:1px solid var(--border)}.btn-outline:hover{background:var(--cream)}
+.btn-danger{background:#C47070;color:#FFF}.btn-danger:hover{background:#A85A5A}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);padding:12px 24px;border-radius:10px;color:#FFF;z-index:400;font-size:.85rem;transition:all .3s;opacity:0}
+.toast.show{opacity:1}.toast.ok{background:#6B8E6B}.toast.err{background:#C47070}
 
-@media(max-width:900px){
-.hero{flex-direction:column-reverse;text-align:center;padding:100px 24px 60px}.hero-content{max-width:100%}.hero-portrait{margin-left:0;margin-bottom:48px}.portrait-frame{width:240px;height:320px}.hero-title-main{font-size:3.5rem}.hero-badge{margin:0 auto 28px;display:inline-flex}
-.about-grid{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:repeat(2,1fr)}.moments-grid{grid-template-columns:repeat(2,1fr)}
-.footer-content{flex-direction:column;text-align:center;gap:28px}.footer-quote p{text-align:center}
-.nav-links{display:none}.nav-toggle{display:flex}.nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:rgba(253,250,245,0.95);backdrop-filter:blur(20px);padding:24px;gap:16px;text-align:center;box-shadow:var(--shadow-sm);border-bottom:1px solid var(--border-light)}
-.gallery-item.featured,.gallery-item.wide{grid-column:span 2}.gallery-item.tall{grid-row:span 2}
+@media(max-width:768px){
+.hero{flex-direction:column-reverse;text-align:center;padding:100px 20px 60px}.hero-portrait{margin:0 0 40px}.portrait-frame{width:220px;height:300px}.hero-title-main{font-size:3rem}
+.about-grid{grid-template-columns:repeat(2,1fr)}.diary-entry{padding-left:52px}.diary-timeline::before{left:20px}.diary-entry::before{left:14px}
+.moments-grid{grid-template-columns:repeat(2,1fr)}
 }
-@media(max-width:600px){
-.hero{padding:80px 16px 40px}.hero-title-main{font-size:2.8rem}.portrait-frame{width:200px;height:270px}.section-title-cn{font-size:1.55rem}
-.about-grid{grid-template-columns:1fr 1fr;gap:12px}.about-card{padding:28px 14px}
-.gallery-grid{grid-template-columns:1fr 1fr;gap:10px}.gallery-item{margin-bottom:0}
-.gallery-item.featured,.gallery-item.wide{grid-column:span 2}.gallery-item.tall{grid-row:span 2}
-.moments-grid{grid-template-columns:1fr}.diary-entry{padding-left:44px}.diary-timeline::before{left:14px}.diary-entry::before{left:8px;width:11px;height:11px}
+@media(max-width:480px){
+.hero-title-main{font-size:2.4rem}.portrait-frame{width:180px;height:260px}
+.about-grid{grid-template-columns:1fr 1fr}.moments-grid{grid-template-columns:1fr}.diary-entry{padding-left:44px}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav" id="nav">
-<div class="nav-inner">
-<a href="#home" class="nav-logo">
-<span class="schnauzer-icon"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="28" rx="18" ry="16" fill="#F5F0E8"/><ellipse cx="20" cy="16" rx="8" ry="9" fill="#F5F0E8"/><ellipse cx="34" cy="18" rx="7" ry="8" fill="#F5F0E8"/><ellipse cx="42" cy="26" rx="6" ry="5" fill="#F5F0E8"/><circle cx="17" cy="14" r="2.5" fill="#2C2C2C"/><circle cx="31" cy="16" r="2.2" fill="#2C2C2C"/><ellipse cx="24" cy="20" rx="5" ry="3.5" fill="#2C2C2C"/><ellipse cx="23" cy="22" rx="2" ry="1.5" fill="#F5F0E8"/><path d="M8 34 Q24 48 40 34" stroke="#D4C4B0" stroke-width="1.5" fill="none"/><ellipse cx="32" cy="30" rx="4" ry="2.5" fill="#E8DDD0"/></svg></span>
-丁丁
+<nav class="nav" id="nav"><div class="nav-inner">
+<a href="#home" class="nav-logo" id="logoBtn">
+<span class="schnauzer"><svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="22" ry="19" fill="#F8F2EA"/><ellipse cx="22" cy="20" rx="10" ry="11" fill="#F8F2EA"/><ellipse cx="42" cy="22" rx="9" ry="10" fill="#F8F2EA"/><ellipse cx="50" cy="30" rx="7" ry="6" fill="#F8F2EA"/><circle cx="19" cy="17" r="3" fill="#2C2C2C"/><circle cx="39" cy="19" r="2.8" fill="#2C2C2C"/><ellipse cx="30" cy="24" rx="6" ry="4" fill="#2C2C2C"/><ellipse cx="29" cy="26" rx="2.5" ry="1.8" fill="#F8F2EA"/><path d="M12 40 Q30 54 48 40" stroke="#D4C4B0" stroke-width="2" fill="none"/><ellipse cx="38" cy="36" rx="5" ry="3" fill="#EAE0D4"/><ellipse cx="17" cy="10" rx="6" ry="3" fill="#F0E8DC" transform="rotate(-15 17 10)"/><ellipse cx="43" cy="12" rx="5" ry="2.5" fill="#F0E8DC" transform="rotate(15 43 12)"/></svg></span>丁丁
 </a>
-<ul class="nav-links">
-<li><a href="#about">关于</a></li><li><a href="#gallery">照片墙</a></li><li><a href="#diary">日记</a></li><li><a href="#moments">小事</a></li>
-</ul>
-<button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
-</div>
-</nav>
+<ul class="nav-links"><li><a href="#about">关于</a></li><li><a href="#diary">日记</a></li><li><a href="#moments">小事</a></li></ul>
+</div></nav>
 
 <section class="hero" id="home">
 <div class="hero-content">
-<div class="hero-badge"><span>14岁</span><span class="hero-dot">·</span><span>♂</span><span class="hero-dot">·</span><span>雪纳瑞</span></div>
+<div class="hero-badge"><span>14岁</span> · <span>♂</span> · <span>白色雪纳瑞</span></div>
 <h1 class="hero-title"><span class="hero-title-main">丁丁</span><span class="hero-title-sub">DING DING</span></h1>
 <p class="hero-desc">一只白色的雪纳瑞，<br>用十四年的时间，<br>教会了全家人什么是无条件的爱。</p>
-<div class="hero-actions"><a href="#about" class="hero-scroll"><span>了解丁丁</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></a></div>
+<a href="#about" class="hero-scroll"><span>了解丁丁</span> ↓</a>
 </div>
-<div class="hero-portrait"><div class="portrait-frame"><img src="photos/惬意.jpg" alt="丁丁的惬意时光"></div></div>
+<div class="hero-portrait"><div class="portrait-frame"><img src="photos/惬意.jpg" alt="丁丁"></div></div>
 </section>
 
-<section class="about" id="about">
-<div class="container">
-<h2 class="section-title"><span class="section-title-cn">关于丁丁</span><span class="section-title-en">About Ding Ding</span></h2>
+<section class="about" id="about"><div class="container">
+<h2 class="section-title">关于丁丁</h2>
 <div class="about-grid">
-<div class="about-card"><div class="about-icon">🎂</div><h3>生日</h3><p>2012年5月12日</p><p class="about-note">金牛座的小老头</p></div>
+<div class="about-card"><div class="about-icon">🎂</div><h3>生日</h3><p>2012年5月12日</p><p class="about-note">金牛座</p></div>
 <div class="about-card"><div class="about-icon">🏠</div><h3>家乡</h3><p>中国 · 沈阳</p><p class="about-note">喜欢下雪天</p></div>
-<div class="about-card"><div class="about-icon">👨‍👩‍👧</div><h3>家庭</h3><p>爸爸 · 妈妈 · 姐姐</p><p class="about-note">幸福的一家</p></div>
-<div class="about-card"><div class="schnauzer-icon"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="28" rx="18" ry="16" fill="#F5F0E8"/><ellipse cx="20" cy="16" rx="8" ry="9" fill="#F5F0E8"/><ellipse cx="34" cy="18" rx="7" ry="8" fill="#F5F0E8"/><ellipse cx="42" cy="26" rx="6" ry="5" fill="#F5F0E8"/><circle cx="17" cy="14" r="2.5" fill="#2C2C2C"/><circle cx="31" cy="16" r="2.2" fill="#2C2C2C"/><ellipse cx="24" cy="20" rx="5" ry="3.5" fill="#2C2C2C"/><ellipse cx="23" cy="22" rx="2" ry="1.5" fill="#F5F0E8"/><path d="M8 34 Q24 48 40 34" stroke="#D4C4B0" stroke-width="1.5" fill="none"/><ellipse cx="32" cy="30" rx="4" ry="2.5" fill="#E8DDD0"/></svg></div><h3>品种</h3><p>白色雪纳瑞</p><p class="about-note">迷你型小帅哥</p></div>
-<div class="about-card"><div class="about-icon">🦐</div><h3>最爱食物</h3><p>虾</p><p class="about-note">唯一的最爱</p></div>
+<div class="about-card"><div class="about-icon">👨‍👩‍👧</div><h3>家庭</h3><p>爸爸·妈妈·姐姐</p><p class="about-note">幸福一家</p></div>
+<div class="about-card"><span class="schnauzer" style="width:42px;height:42px;margin:0 auto 10px"><svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="22" ry="19" fill="#F8F2EA"/><ellipse cx="22" cy="20" rx="10" ry="11" fill="#F8F2EA"/><ellipse cx="42" cy="22" rx="9" ry="10" fill="#F8F2EA"/><circle cx="19" cy="17" r="3" fill="#2C2C2C"/><circle cx="39" cy="19" r="2.8" fill="#2C2C2C"/><ellipse cx="30" cy="24" rx="6" ry="4" fill="#2C2C2C"/><ellipse cx="29" cy="26" rx="2.5" ry="1.8" fill="#F8F2EA"/><path d="M12 40 Q30 54 48 40" stroke="#D4C4B0" stroke-width="2" fill="none"/></svg></span><h3>品种</h3><p>白色雪纳瑞</p><p class="about-note">迷你型</p></div>
+<div class="about-card"><div class="about-icon">🦐</div><h3>最爱食物</h3><p>虾</p><p class="about-note">唯一最爱</p></div>
 <div class="about-card"><div class="about-icon">🤫</div><h3>小秘密</h3><p>从未恋爱</p><p class="about-note">纯情小处男</p></div>
-<div class="about-card"><div class="about-icon">😴</div><h3>特长</h3><p>打呼噜 + 歪头杀</p><p class="about-note">装无辜十级</p></div>
-<div class="about-card"><div class="about-icon">👧</div><h3>最亲的人</h3><p>姐姐</p><p class="about-note">照片里总在她身边</p></div>
+<div class="about-card"><div class="about-icon">😴</div><h3>特长</h3><p>打呼噜+歪头杀</p><p class="about-note">装无辜十级</p></div>
+<div class="about-card"><div class="about-icon">👧</div><h3>最亲的人</h3><p>姐姐</p><p class="about-note">总在她身边</p></div>
 </div>
-<div class="about-story">
-<p>丁丁来到我们家的时候，只有巴掌大小。一团白色的绒毛，两只黑豆般的眼睛，好奇地打量着这个新世界。十四年了，它从小奶狗变成了胡须泛白的老爷爷，但那种纯真的眼神，从来没有变过。</p>
-</div>
-</div>
-</section>
+<div class="about-story">丁丁来到我们家的时候，只有巴掌大小。一团白色的绒毛，两只黑豆般的眼睛。十四年了，它从小奶狗变成了胡须泛白的老爷爷，但那双眼睛里的纯真，从来没有变过。</div>
+</div></section>
 
-<section class="gallery" id="gallery">
-<div class="container">
-<h2 class="section-title"><span class="section-title-cn">丁丁的照片墙</span><span class="section-title-en">Photo Gallery</span></h2>
-<p class="section-subtitle">每一张照片，都是一个小故事</p>
-<div class="gallery-grid" id="galleryGrid"></div>
-</div>
-</section>
-
-<div class="lightbox" id="lightbox">
-<button class="lightbox-close" id="lightboxClose">&times;</button>
-<button class="lightbox-prev" id="lightboxPrev">&#8249;</button>
-<button class="lightbox-next" id="lightboxNext">&#8250;</button>
-<div class="lightbox-content"><img src="" alt="" id="lightboxImg"><div class="lightbox-info"><h3 id="lightboxTitle"></h3><p id="lightboxDesc"></p></div></div>
-</div>
-
-<section class="diary" id="diary">
-<div class="container">
-<h2 class="section-title"><span class="section-title-cn">丁丁日记</span><span class="section-title-en">Ding Ding's Diary</span></h2>
-<p class="section-subtitle">用文字记住那些温柔的日子</p>
+<section class="diary" id="diary"><div class="container">
+<h2 class="section-title">丁丁日记</h2>
+<p class="section-sub">每张照片背后，都有一个温柔的故事</p>
 <div class="diary-timeline" id="diaryTimeline"></div>
-</div>
-</section>
+</div></section>
 
-<section class="moments" id="moments">
-<div class="container">
-<h2 class="section-title"><span class="section-title-cn">关于丁丁的小事</span><span class="section-title-en">Little Things</span></h2>
-<p class="section-subtitle">那些让生活闪闪发光的平凡瞬间</p>
+<div class="lightbox" id="lightbox"><button class="lightbox-close" id="lbClose">&times;</button><img src="" alt="" id="lbImg"></div>
+
+<section class="moments" id="moments"><div class="container">
+<h2 class="section-title">关于丁丁的小事</h2>
+<p class="section-sub">平凡日子里的闪光瞬间</p>
 <div class="moments-grid" id="momentsGrid"></div>
-</div>
-</section>
+</div></section>
 
-<footer class="footer">
-<div class="container">
-<div class="footer-content">
-<div class="footer-brand">
-<div class="footer-logo"><span class="schnauzer-icon"><svg viewBox="0 0 48 48"><ellipse cx="24" cy="28" rx="18" ry="16" fill="#FFF"/><ellipse cx="20" cy="16" rx="8" ry="9" fill="#FFF"/><ellipse cx="34" cy="18" rx="7" ry="8" fill="#FFF"/><circle cx="17" cy="14" r="2.5" fill="#2C2C2C"/><circle cx="31" cy="16" r="2.2" fill="#2C2C2C"/><ellipse cx="24" cy="20" rx="5" ry="3.5" fill="#2C2C2C"/><ellipse cx="23" cy="22" rx="2" ry="1.5" fill="#FFF"/><path d="M8 34 Q24 48 40 34" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="none"/></svg></span></div>
+<footer class="footer"><div class="container">
+<div class="schnauzer"><svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="22" ry="19" fill="#FFF" opacity=".8"/><ellipse cx="22" cy="20" rx="10" ry="11" fill="#FFF" opacity=".8"/><ellipse cx="42" cy="22" rx="9" ry="10" fill="#FFF" opacity=".8"/><circle cx="19" cy="17" r="3" fill="#2C2C2C"/><circle cx="39" cy="19" r="2.8" fill="#2C2C2C"/><ellipse cx="30" cy="24" rx="6" ry="4" fill="#2C2C2C"/><ellipse cx="29" cy="26" rx="2.5" ry="1.8" fill="#2C2C2C"/><path d="M12 40 Q30 54 48 40" stroke="rgba(255,255,255,.3)" stroke-width="2" fill="none"/></svg></div>
 <h3>丁丁的小世界</h3><p>2012 — 永远</p>
-</div>
-<div class="footer-quote"><p>「狗狗的生命比我们短，<br>是因为它们不需要花那么长时间<br>去学会如何爱。」</p></div>
-</div>
-<div class="footer-bottom"><p>© 2026 丁丁的小世界 · dingding.bond</p></div>
-</div>
-</footer>
+<div class="footer-bottom">© 2026 丁丁的小世界 · dingding.bond</div>
+</div></footer>
 
-<button class="back-to-top" id="backToTop"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
+<!-- Admin Panel -->
+<div class="admin-overlay" id="adminOverlay">
+<div class="admin-panel">
+<h2>🐶 添加新日记</h2>
+<form id="adminForm">
+<div class="dropzone" id="dropzone"><div class="dz-icon">📸</div><div>点击或拖拽上传照片</div></div>
+<input type="file" id="photoFile" accept="image/*" style="display:none">
+<img class="preview-img" id="previewImg">
+<label>照片标题</label><input type="text" id="aTitle" placeholder="如：雪中漫步">
+<label>日记内容</label><textarea id="aContent" placeholder="写下这张照片背后的故事…"></textarea>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+<div><label>日期</label><input type="date" id="aDate"></div>
+<div><label>心情</label><select id="aMood"><option>温暖</option><option>有趣</option><option>日常</option><option>感恩</option><option>幸福</option><option>感动</option></select></div>
+</div>
+<div class="btn-row">
+<button type="submit" class="btn btn-primary">📝 生成日记并发布</button>
+<button type="button" class="btn btn-outline" id="adminClose">取消</button>
+</div>
+</form>
+</div></div>
+<div class="toast" id="toast"></div>
 
 <script>
-var PHOTOS=[
-{filename:"惬意.jpg",title:"惬意时光",desc:"午后的阳光正好，丁丁享受着属于自己的宁静时刻，岁月静好不过如此",featured:true},
-{filename:"笑.jpg",title:"丁丁的微笑",desc:"雪纳瑞特有的治愈笑容，看一眼心都化了，这就是养狗的快乐",wide:true},
-{filename:"跟姐姐.jpg",title:"和姐姐在一起",desc:"姐姐是丁丁最亲近的人，照片里的女孩就是姐姐，两个最好的朋友"},
-{filename:"丁丁和姐姐.JPG",title:"最好的陪伴",desc:"有你在我身边，每一天都是好天气"},
-{filename:"丁丁和姐姐（过年时）.JPG",title:"过年的温暖",desc:"春节时和姐姐一起，喜气洋洋迎新年，丁丁也穿上了红色",tall:true},
-{filename:"丁丁踏雪.JPG",title:"雪中漫步",desc:"沈阳的冬天银装素裹，白色的丁丁在雪地里像个雪精灵",wide:true},
-{filename:"穿冬天的新衣服.jpg",title:"冬天的新衣服",desc:"穿上新衣服的丁丁，帅气又保暖，走起路来格外神气"},
-{filename:"准备洗澡.JPG",title:"洗澡前的眼神",desc:"每次洗澡前都要用这个无辜的眼神求饶：'可以不洗吗？'"},
-{filename:"刚睡醒.JPG",title:"刚睡醒的丁丁",desc:"睡眼惺忪，毛发乱糟糟，但就是这个样子最让人忍不住想抱抱"},
-{filename:"打哈欠.jpg",title:"一个大哈欠",desc:"一个哈欠能打十秒钟，舌头卷成小花，然后若无其事地舔舔鼻子",tall:true},
-{filename:"慵懒的午觉.jpg",title:"慵懒的午觉",desc:"十四岁的老爷爷，最爱在沙发上晒太阳打盹，呼噜声像小马达"},
-{filename:"回眸.jpg",title:"回眸一瞬",desc:"每次叫它的名字，都会这样回头看你，眼神里是十四年的默契"},
-{filename:"盯.jpg",title:"目不转睛",desc:"大概是看到虾了，眼神里全是渴望——那是它唯一无法抗拒的美食"},
-{filename:"毛躁的时候.jpg",title:"毛躁的时候",desc:"偶尔也有小脾气，毛发都炸起来了，但过不了三分钟就又来蹭你了"},
-{filename:"去外婆家.jpg",title:"去外婆家",desc:"最喜欢去外婆家串门，一路小跑不回头，因为外婆总偷偷给它好吃的"},
-{filename:"好朋友小黄.jpg",title:"好朋友小黄",desc:"和小黄在一起的快乐时光，两只小狗的友谊不需要语言"}
-];
+// ── 内置日记数据 ──
+var BUILTIN=[{id:1,date:"2025-12-15",title:"雪地里的白色精灵",content:"今天沈阳下大雪，带丁丁出门踏雪。它在雪地里蹦来蹦去，白色毛发和白雪融为一体，只露出两只黑豆般的眼睛。找了半天才发现它在雪堆后面刨坑，像个快乐的孩子。十四岁了，看到雪还是这么兴奋。",mood:"幸福",photo:"丁丁踏雪.JPG"},{id:2,date:"2025-11-12",title:"十四岁生日",content:"今天是丁丁十四岁生日。姐姐特意买了虾——它唯一无法抗拒的食物。看到虾的瞬间，眼睛瞪得溜圆，盯着盘子目不转睛，那副认真的表情把全家逗笑了。许愿时我们都默念同一个愿望：希望丁丁慢一点变老。",mood:"感恩",photo:"盯.jpg"},{id:3,date:"2025-10-03",title:"去外婆家",content:"带丁丁去外婆家，一出门它就兴奋得不行，一路小跑不回头。到了外婆家直奔厨房——它记得外婆总在那里偷偷塞好吃的。外婆摸着它的头说'我们丁丁又帅了'，丁丁立刻歪头杀，那副得意的样子让人忍不住想笑。",mood:"温暖",photo:"去外婆家.jpg"},{id:4,date:"2025-09-18",title:"姐姐的日常陪伴",content:"姐姐是丁丁在这个世界上最亲的人。每天放学回家，丁丁听到脚步声就跑到门口，尾巴摇得像螺旋桨。然后一人一狗窝在沙发上，姐姐看书，丁丁靠在她腿上打盹。有时候想，不是我们在照顾丁丁，是他们互相治愈。",mood:"日常",photo:"跟姐姐.jpg"},{id:5,date:"2025-08-22",title:"洗澡大作战",content:"又到洗澡日。拿出浴巾的瞬间，丁丁就躲到沙发底下，只露出两只眼睛可怜巴巴地看着我。那个无辜的表情——每次都让我心软。但洗还是要洗的。吹干之后它在客厅里疯狂跑圈，像白色闪电，完全忘了刚才还在求饶。",mood:"有趣",photo:"准备洗澡.JPG"},{id:6,date:"2025-07-10",title:"冬日的新衣服",content:"去年冬天给丁丁买了新衣服，穿上之后它在镜子前站了好久——我确定它在欣赏自己。然后昂首挺胸在客厅走了三圈，像在走秀。爸爸说'丁丁比你还会臭美'。照片里的它穿着新衣服，确实帅气得不得了。",mood:"有趣",photo:"穿冬天的新衣服.jpg"},{id:7,date:"2025-06-15",title:"刚睡醒的样子最可爱",content:"每天早上丁丁刚睡醒的时候，毛发乱蓬蓬的，眼睛还没完全睁开，呆呆地坐在窝里。这个模样总是让我忍不住掏手机——实在太治愈了。等它彻底清醒，就会晃晃悠悠走过来，用鼻子碰碰我的手：早安，我饿了。",mood:"日常",photo:"刚睡醒.JPG"},{id:8,date:"2025-05-20",title:"一个哈欠的哲学",content:"丁丁打哈欠是家里最具感染力的行为。一个哈欠能持续十秒，舌头卷成精致的小花，然后若无其事地舔舔鼻子。看完它打哈欠，你会发现全家人都跟着打了一圈。这大概就是狗狗的魔力。",mood:"日常",photo:"打哈欠.jpg"},{id:9,date:"2025-04-05",title:"过年和姐姐的合影",content:"春节时丁丁和姐姐拍了好多照片。它穿着喜庆的小围巾，和姐姐挨在一起，眼神里全是信任和依赖。这张照片是我最喜欢的一张——因为它记录下了丁丁看向姐姐时的那种纯粹的温柔。",mood:"温暖",photo:"丁丁和姐姐（过年时）.JPG"},{id:10,date:"2025-03-20",title:"惬意的午后",content:"阳光透过窗户洒在沙发上，丁丁趴在光线最足的那个角落，眯着眼睛享受。这个画面太安静太美好了，我轻轻按下快门。十四岁的丁丁教会我们一件事：幸福就是找一个温暖的角落，安心地打个盹。",mood:"日常",photo:"惬意.jpg"}];
 
-var DIARY=[
-{id:1,date:"2025-12-15",title:"雪地里的白色精灵",content:"今天沈阳下了一场大雪，带丁丁出门踏雪。它在雪地里蹦来蹦去，白色的毛发和白雪融为一体，只露出两只黑豆般的眼睛和一颗黑鼻子。找了半天才看到它在雪堆后面刨坑，像个快乐的孩子。十四岁了，看到雪还是这么兴奋，大概是因为它是冬天的孩子吧。",mood:"幸福",photo:"丁丁踏雪.JPG"},
-{id:2,date:"2025-11-12",title:"十四岁生日",content:"今天是丁丁的十四岁生日。姐姐特意买了虾——丁丁唯一无法抗拒的食物。它看到虾的瞬间，眼睛瞪得溜圆，盯着盘子目不转睛，那个认真的表情把我们全家都逗笑了。十四年了，从巴掌大的小奶狗到胡须泛白的老爷爷，丁丁陪我们走过了太多日子。许愿的时候我们都默念同一个愿望：希望丁丁慢一点变老。",mood:"感恩",photo:"盯.jpg"},
-{id:3,date:"2025-10-03",title:"去外婆家",content:"今天带丁丁去外婆家。一出门它就兴奋得不行，一路小跑，根本不回头看我。到了外婆家更是直奔厨房——它记得外婆总在那里偷偷塞好吃的。外婆摸着它的头说'我们丁丁又帅了'，丁丁立刻歪头杀，那副得意的样子让人忍不住想笑。",mood:"温暖",photo:"去外婆家.jpg"},
-{id:4,date:"2025-09-18",title:"姐姐的日常陪伴",content:"姐姐是丁丁在这个世界上最亲的人。每天放学回家，丁丁听到脚步声就会跑到门口等着，尾巴摇得像螺旋桨。然后一人一狗窝在沙发上，姐姐看书，丁丁靠在她腿上打盹。有时候我想，不是姐姐在照顾丁丁，而是他们互相陪伴、互相治愈。照片里只要有姐姐，丁丁的眼睛里就有光。",mood:"日常",photo:"跟姐姐.jpg"},
-{id:5,date:"2025-08-22",title:"洗澡大作战",content:"又到了洗澡的日子。我拿出浴巾的瞬间，丁丁就躲到了沙发底下，只露出两只眼睛可怜巴巴地看着我。那个表情——照片里记录下来的那种无辜眼神——每次都让我心软。但没办法，洗还是要洗的。吹干之后它在客厅里疯狂跑圈，像一个白色的闪电，完全忘了刚才还在求饶。",mood:"有趣",photo:"准备洗澡.JPG"},
-{id:6,date:"2025-07-10",title:"冬日的新衣服",content:"去年冬天给丁丁买了一件新衣服，穿上之后它在镜子前站了好久——我确定它是在欣赏自己。然后昂首挺胸地在客厅里走了三圈，像在走秀。爸爸说'丁丁比你还会臭美'。照片里的它穿着新衣服，确实帅气得不得了。",mood:"有趣",photo:"穿冬天的新衣服.jpg"},
-{id:7,date:"2025-06-15",title:"刚睡醒的样子最可爱",content:"每天早上丁丁刚睡醒的时候，毛发乱蓬蓬的，眼睛还没完全睁开，呆呆地坐在窝里。这个模样总是让我忍不住掏出手机——实在太治愈了。等它彻底清醒，就会晃晃悠悠走过来，用鼻子碰碰我的手，意思是：早安，我饿了。",mood:"日常",photo:"刚睡醒.JPG"},
-{id:8,date:"2025-05-20",title:"一个哈欠的哲学",content:"丁丁打哈欠是这个家里最具感染力的行为。一个哈欠能持续十秒钟，舌头卷成精致的小花，然后若无其事地舔舔鼻子。看完它打哈欠，你会发现全家人都跟着打了一圈哈欠。这大概就是狗狗的魔力——连它的困意都能传染。",mood:"日常",photo:"打哈欠.jpg"}
-];
+var MOMENTS=[{id:1,text:"丁丁有一个专属的小枕头，走到哪叼到哪，那是它刚来家时我们给的第一个礼物。"},{id:2,text:"快递员敲门时，丁丁会用三种声调叫：警告、询问、然后「咦好像是熟人」。"},{id:3,text:"每次洗澡都是一场战争，但吹干后它会在客厅疯狂跑圈，像一道白色闪电。"},{id:4,text:"丁丁听得懂「散步」和「吃虾」，听到这两个词耳朵会瞬间竖起来。"},{id:5,text:"下雪天，白色丁丁在白色雪地里，只看得见两只黑眼睛和一颗黑鼻子。"},{id:6,text:"丁丁睡觉时偶尔会「跑」，四肢轻轻划动，大概在梦里追着永远追不上的松鼠。"}];
 
-var MOMENTS=[
-{id:1,text:"丁丁有一个专属的小枕头，走到哪叼到哪，那是它刚来家时我们给的第一个礼物。"},
-{id:2,text:"快递员来敲门的时候，丁丁会用三种不同的声调叫：警告、询问、然后就是「咦好像是熟人」。"},
-{id:3,text:"每次洗澡都是一场战争，但吹干后它会在客厅里疯狂跑圈，像一个白色的闪电。"},
-{id:4,text:"丁丁听得懂「散步」和「吃虾」，听到这两个词的时候，它的耳朵会瞬间竖起来。"},
-{id:5,text:"下雪天，白色的丁丁在白色的雪地里，只看得见两只黑眼睛和一颗黑鼻子。"},
-{id:6,text:"丁丁睡觉的时候偶尔会「跑」，四肢轻轻划动，大概在梦里追着一只永远追不上的松鼠。"}
-];
+// ── 读取数据（localStorage + 内置） ──
+function getDiary(){try{var d=localStorage.getItem('dingding_diary');return d?JSON.parse(d):[]}catch(e){return[]}}
+function saveDiary(arr){localStorage.setItem('dingding_diary',JSON.stringify(arr))}
+function getAllDiary(){var all=getDiary().concat(BUILTIN);all.sort(function(a,b){return new Date(b.date)-new Date(a.date)});return all}
 
-// ── 照片墙（错落布局） ──
-(function(){
-var g=document.getElementById('galleryGrid');
-g.innerHTML=PHOTOS.map(function(p,i){
-var cls='gallery-item';
-if(p.featured)cls+=' featured';
-else if(p.wide)cls+=' wide';
-else if(p.tall)cls+=' tall';
-return'<div class="'+cls+'" data-index="'+i+'" onclick="openLb('+i+')"><img src="photos/'+encodeURI(p.filename)+'" alt="'+p.title+'" loading="lazy"><div class="gallery-item-overlay"><h4>'+p.title+'</h4></div></div>';
+// ── 渲染日记 ──
+function renderDiary(){
+var entries=getAllDiary();
+var tl=document.getElementById('diaryTimeline');
+tl.innerHTML=entries.map(function(e){
+var imgTag='';
+if(e.photoBase64){imgTag='<div class="diary-photo"><img src="'+e.photoBase64+'" alt="'+e.title+'" onclick="openLb(this.src)"></div>'}
+else if(e.photo){imgTag='<div class="diary-photo"><img src="photos/'+encodeURI(e.photo)+'" alt="'+e.title+'" onclick="openLb(this.src)"></div>'}
+return'<div class="diary-entry"><div class="diary-date">'+fmtD(e.date)+'</div><h3>'+e.title+'</h3>'+(e.mood?'<span class="diary-mood">'+e.mood+'</span>':'')+'<div class="diary-body">'+e.content+'</div>'+imgTag+'</div>';
 }).join('');
-})();
+}
+function fmtD(s){var d=new Date(s);return d.getFullYear()+' . '+String(d.getMonth()+1).padStart(2,'0')+' . '+String(d.getDate()).padStart(2,'0')}
 
-var ci=0;
-function openLb(i){ci=i;ulb();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
-function closeLb(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
-function prevP(){ci=(ci-1+PHOTOS.length)%PHOTOS.length;ulb()}
-function nextP(){ci=(ci+1)%PHOTOS.length;ulb()}
-function ulb(){var p=PHOTOS[ci];var img=document.getElementById('lightboxImg');img.style.opacity='0';setTimeout(function(){img.src='photos/'+encodeURI(p.filename);img.alt=p.title;img.onload=function(){img.style.opacity='1'}},180);document.getElementById('lightboxTitle').textContent=p.title;document.getElementById('lightboxDesc').textContent=p.desc||''}
-document.addEventListener('keydown',function(e){var lb=document.getElementById('lightbox');if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')prevP();if(e.key==='ArrowRight')nextP()});
-document.getElementById('lightboxClose').onclick=closeLb;document.getElementById('lightboxPrev').onclick=prevP;document.getElementById('lightboxNext').onclick=nextP;
+// ── Lightbox ──
+function openLb(src){document.getElementById('lbImg').src=src;document.getElementById('lightbox').classList.add('on')}
+document.getElementById('lbClose').onclick=function(){document.getElementById('lightbox').classList.remove('on')}
+document.getElementById('lightbox').onclick=function(e){if(e.target===this)this.classList.remove('on')}
 
-// ── 日记 ──
-(function(){
-var e=DIARY;e.sort(function(a,b){return new Date(b.date)-new Date(a.date)});
-document.getElementById('diaryTimeline').innerHTML=e.map(function(en){
-var pr=PHOTOS.find(function(p){return p.filename===en.photo});
-var ref=pr?'<div class="diary-photo-ref">📷 '+pr.title+'</div>':'';
-return'<div class="diary-entry reveal"><div class="diary-date">'+fdd(en.date)+'</div><h3>'+en.title+'</h3><p>'+en.content+'</p>'+(en.mood?'<span class="diary-mood">'+en.mood+'</span>':'')+ref+'</div>';
-}).join('');
-})();
-function fdd(s){var d=new Date(s);return d.getFullYear()+' . '+String(d.getMonth()+1).padStart(2,'0')+' . '+String(d.getDate()).padStart(2,'0')}
-
-// ── 小事 ──
-(function(){document.getElementById('momentsGrid').innerHTML=MOMENTS.map(function(m,i){return'<div class="moment-card reveal"><span class="moment-number">'+String(i+1).padStart(2,'0')+'</span><p>'+m.text+'</p></div>'}).join('');})();
+// ── 渲染小事 ──
+(function(){document.getElementById('momentsGrid').innerHTML=MOMENTS.map(function(m,i){return'<div class="moment-card"><span class="moment-number">'+String(i+1).padStart(2,'0')+'</span><p>'+m.text+'</p></div>'}).join('');})();
 
 // ── 导航 ──
-(function(){var n=document.getElementById('nav');var t=document.getElementById('navToggle');window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60)});t.addEventListener('click',function(){n.classList.toggle('open')});document.querySelectorAll('.nav-links a').forEach(function(l){l.addEventListener('click',function(){n.classList.remove('open')})})})();
+(function(){var n=document.getElementById('nav');window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60)})})();
 
-// ── 回到顶部 ──
-(function(){var b=document.getElementById('backToTop');window.addEventListener('scroll',function(){b.classList.toggle('visible',window.scrollY>600)});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();
+// ── Admin Panel ──
+var logoClicks=0;
+document.getElementById('logoBtn').addEventListener('click',function(e){
+logoClicks++;if(logoClicks>=5){logoClicks=0;openAdmin()}setTimeout(function(){logoClicks=0},2000)
+});
 
-// ── 滚动动画 ──
-(function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)})},100)})();
+function openAdmin(){document.getElementById('adminOverlay').classList.add('on');document.getElementById('aDate').value=new Date().toISOString().slice(0,10)}
+document.getElementById('adminClose').onclick=function(){document.getElementById('adminOverlay').classList.remove('on')}
+document.getElementById('adminOverlay').onclick=function(e){if(e.target===this)this.classList.remove('on')}
+
+// 拖拽上传
+var dropzone=document.getElementById('dropzone');
+var fileInput=document.getElementById('photoFile');
+var previewImg=document.getElementById('previewImg');
+var photoBase64='';
+
+dropzone.addEventListener('click',function(){fileInput.click()});
+dropzone.addEventListener('dragover',function(e){e.preventDefault();dropzone.style.borderColor='var(--terracotta)'});
+dropzone.addEventListener('dragleave',function(){dropzone.style.borderColor=''});
+dropzone.addEventListener('drop',function(e){e.preventDefault();dropzone.style.borderColor='';if(e.dataTransfer.files.length)handleFile(e.dataTransfer.files[0])});
+fileInput.addEventListener('change',function(){if(this.files.length)handleFile(this.files[0])});
+
+function handleFile(file){
+if(!file.type.match(/image\//)){toast('请选择图片文件','err');return}
+var reader=new FileReader();
+reader.onload=function(e){
+photoBase64=e.target.result;
+previewImg.src=photoBase64;previewImg.style.display='block';
+dropzone.querySelector('.dz-icon').textContent='✅';
+dropzone.querySelector('div:last-child').textContent=file.name+' ('+Math.round(file.size/1024)+'KB)';
+};
+reader.readAsDataURL(file);
+}
+
+// 提交
+document.getElementById('adminForm').addEventListener('submit',function(e){
+e.preventDefault();
+var title=document.getElementById('aTitle').value.trim();
+var content=document.getElementById('aContent').value.trim();
+if(!title||!content)return toast('标题和内容不能为空','err');
+if(!photoBase64)return toast('请上传照片','err');
+
+var entry={
+id:Date.now(),
+date:document.getElementById('aDate').value||new Date().toISOString().slice(0,10),
+title:title,
+content:content,
+mood:document.getElementById('aMood').value,
+photoBase64:photoBase64
+};
+
+var diary=getDiary();
+diary.push(entry);
+saveDiary(diary);
+renderDiary();
+
+// 重置表单
+document.getElementById('aTitle').value='';
+document.getElementById('aContent').value='';
+photoBase64='';
+previewImg.style.display='none';
+fileInput.value='';
+dropzone.querySelector('.dz-icon').textContent='📸';
+dropzone.querySelector('div:last-child').textContent='点击或拖拽上传照片';
+document.getElementById('adminOverlay').classList.remove('on');
+toast('✅ 日记已发布！','ok');
+});
+
+function toast(msg,type){
+var t=document.getElementById('toast');
+t.textContent=msg;t.className='toast '+type+' show';
+setTimeout(function(){t.classList.remove('show')},2500);
+}
+
+// ── 初始化 ──
+renderDiary();
 </script>
 </body>
 </html>
