@@ -246,6 +246,7 @@ var B=[{id:1,date:"2025-12-15",title:"雪地里的白色精灵",content:"沈阳�
 function gD(){if(!SB)return Promise.resolve([]);return SB.from('diary').select('*').order('date',{ascending:false}).then(function(r){return r.data||[]}).catch(function(){return[]})}
 function sD(e){if(!SB)return Promise.resolve();return SB.from('diary').insert([e]).then(function(r){if(r.error)throw r.error})}
 function aD(){return gD().then(function(cloud){var all=(cloud||[]).concat(B);all.sort(function(x,y){return new Date(y.date)-new Date(x.date)});return all})}
+function fD(s){var d=new Date(s);return d.getFullYear()+' . '+String(d.getMonth()+1).padStart(2,'0')+' . '+String(d.getDate()).padStart(2,'0')}
 function rD(){aD().then(function(entries){var el=document.getElementById('dList');el.innerHTML=entries.map(function(e,i){var odd=i%2===0;var img=e.photo_base64?e.photo_base64.startsWith('http')?'<img src="'+e.photo_base64+'" alt="'+e.title+'" onclick="oL(this.src)">':'<img src="'+e.photo_base64+'" alt="'+e.title+'" onclick="oL(this.src)">':'<img src="photos/'+encodeURI(e.photo||'')+'" alt="'+e.title+'" onclick="oL(this.src)">';return'<div class="d-entry"><div class="d-photo"><div class="tag">'+(e.mood||'日常')+'</div>'+img+'</div><div class="d-text"><div class="date">'+fD(e.date)+'</div><h3>'+e.title+'</h3><p>'+e.content+'</p></div></div>'}).join('');document.querySelectorAll('.d-entry').forEach(function(en,i){if(i%2===1)en.querySelector('.d-photo').style.order='-1'})})}
 
 function oL(s){document.getElementById('lbImg').src=s;document.getElementById('lb').classList.add('on')}
