@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>丁丁的小世界</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
 <style>
 :root{
 --bg:#06060E;--surface:#0E0E20;--card:#161630;--border:#252545;
@@ -236,22 +238,24 @@ img{display:block;max-width:100%}
 <div class="toast" id="toast"></div>
 
 <script>
+var SB=supabase.createClient('https://fmevwcltoyrhgnyfunys.supabase.co','sb_publishable_e1GLHFwoTADA6ZCyzERVVA_itmO2O4l');
 var B=[{id:1,date:"2025-12-15",title:"雪地里的白色精灵",content:"沈阳大雪如期而至。带丁丁出门，它在雪地里蹦来蹦去，白色毛发和白雪融为一体。找了半天才发现它在雪堆后面刨坑，像个快乐的孩子。十四岁了，看到雪还是这么兴奋。",mood:"幸福",photo:"丁丁踏雪.JPG"},{id:2,date:"2025-11-12",title:"十四岁生日",content:"丁丁十四岁了。姐姐买了虾——它唯一无法抗拒的食物。看到虾的瞬间，眼睛瞪得溜圆，盯着盘子目不转睛。许愿时我们都默念：慢一点变老，再陪我们久一点。",mood:"感恩",photo:"盯.jpg"},{id:3,date:"2025-10-03",title:"去外婆家",content:"一出门就兴奋得不行，小跑直奔外婆家。到了直奔厨房——它记得外婆总在那里偷偷塞好吃的。外婆说'我们丁丁又帅了'，它立刻歪头杀。",mood:"温暖",photo:"去外婆家.jpg"},{id:4,date:"2025-09-18",title:"姐姐的日常",content:"姐姐是丁丁最亲的人。每天放学，丁丁听到脚步声就冲到门口，尾巴摇得像螺旋桨。一人一狗窝在沙发上——是他们互相治愈。",mood:"日常",photo:"跟姐姐.jpg"},{id:5,date:"2025-08-22",title:"洗澡大作战",content:"拿出浴巾的瞬间，丁丁就躲到沙发底下，只露出眼睛可怜巴巴地看着我。吹干之后它在客厅疯狂跑圈，像一道白色闪电。",mood:"有趣",photo:"准备洗澡.JPG"},{id:6,date:"2025-07-10",title:"冬日的新衣",content:"穿上新衣服后丁丁在镜子前站了好久——它在欣赏自己。然后昂首挺胸在客厅走了三圈，像在走秀。",mood:"有趣",photo:"穿冬天的新衣服.jpg"},{id:7,date:"2025-06-15",title:"刚睡醒的模样",content:"每天早晨丁丁刚睡醒时，毛发乱蓬蓬，眼睛半睁，呆呆坐在窝里。等它彻底清醒，就晃晃悠悠过来用鼻子碰我的手：早安，我饿了。",mood:"日常",photo:"刚睡醒.JPG"},{id:8,date:"2025-05-20",title:"哈欠的艺术",content:"丁丁打哈欠是家里最具感染力的行为。一个哈欠持续十秒，舌头卷成精致的小花，然后若无其事舔舔鼻子。",mood:"日常",photo:"打哈欠.jpg"},{id:9,date:"2025-04-05",title:"过年与姐姐",content:"春节，丁丁和姐姐拍了这张合影。穿着喜庆的小围巾，挨着姐姐。拍完后丁丁舔了舔姐姐的脸——那是它说'我爱你'的方式。",mood:"温暖",photo:"丁丁和姐姐（过年时）.JPG"},{id:10,date:"2025-03-20",title:"午后阳光",content:"阳光透过窗洒在沙发上，丁丁趴在光线最足的那个角落，眯着眼睛享受。十四岁的丁丁教会我们：幸福不过是找一个温暖的角落，安心打个盹。",mood:"日常",photo:"惬意.jpg"}];
 
-function gD(){try{var d=localStorage.getItem('dd');return d?JSON.parse(d):[]}catch(e){return[]}}
-function sD(a){localStorage.setItem('dd',JSON.stringify(a))}
-function aD(){var a=gD().concat(B);a.sort(function(x,y){return new Date(y.date)-new Date(x.date)});return a}
-function rD(){var el=document.getElementById('dList');el.innerHTML=aD().map(function(e,i){var odd=i%2===0;var img=e.photoBase64?'<img src="'+e.photoBase64+'" alt="'+e.title+'" onclick="oL(this.src)">':'<img src="photos/'+encodeURI(e.photo||'')+'" alt="'+e.title+'" onclick="oL(this.src)">';return'<div class="d-entry"><div class="d-photo"><div class="tag">'+(e.mood||'日常')+'</div>'+img+'</div><div class="d-text"><div class="date">'+fD(e.date)+'</div><h3>'+e.title+'</h3><p>'+e.content+'</p></div></div>'}).join('');document.querySelectorAll('.d-entry').forEach(function(en,i){if(i%2===1)en.querySelector('.d-photo').style.order='-1'})}
-function fD(s){var d=new Date(s);return d.getFullYear()+' . '+String(d.getMonth()+1).padStart(2,'0')+' . '+String(d.getDate()).padStart(2,'0')}
+function gD(){return SB.from('diary').select('*').order('date',{ascending:false}).then(function(r){return r.data||[]}).catch(function(){return[]})}
+function sD(e){return SB.from('diary').insert([e]).then(function(r){if(r.error)throw r.error})}
+function aD(){return gD().then(function(cloud){var all=(cloud||[]).concat(B);all.sort(function(x,y){return new Date(y.date)-new Date(x.date)});return all})}
+function rD(){aD().then(function(entries){var el=document.getElementById('dList');el.innerHTML=entries.map(function(e,i){var odd=i%2===0;var img=e.photo_base64?e.photo_base64.startsWith('http')?'<img src="'+e.photo_base64+'" alt="'+e.title+'" onclick="oL(this.src)">':'<img src="'+e.photo_base64+'" alt="'+e.title+'" onclick="oL(this.src)">':'<img src="photos/'+encodeURI(e.photo||'')+'" alt="'+e.title+'" onclick="oL(this.src)">';return'<div class="d-entry"><div class="d-photo"><div class="tag">'+(e.mood||'日常')+'</div>'+img+'</div><div class="d-text"><div class="date">'+fD(e.date)+'</div><h3>'+e.title+'</h3><p>'+e.content+'</p></div></div>'}).join('');document.querySelectorAll('.d-entry').forEach(function(en,i){if(i%2===1)en.querySelector('.d-photo').style.order='-1'})})}
+
 function oL(s){document.getElementById('lbImg').src=s;document.getElementById('lb').classList.add('on')}
 document.getElementById('lbX').onclick=function(){document.getElementById('lb').classList.remove('on')}
 document.getElementById('lb').onclick=function(e){if(e.target===this)this.classList.remove('on')}
 
-function gN(){try{var d=localStorage.getItem('dd_notes');return d?JSON.parse(d):[]}catch(e){return[]}}
-function sN(a){localStorage.setItem('dd_notes',JSON.stringify(a))}
-function rN(){var n=gN();var el=document.getElementById('notesGrid');if(!n.length){el.innerHTML='<div class="note-empty">还没有随手记 ✍️</div>';return}el.innerHTML=n.map(function(x){var t=new Date(x.time);var ts=t.getMonth()+1+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');return'<div class="note-card"><div class="note-time">'+ts+'</div><div class="note-text">'+x.text+'</div><button class="note-del" data-id="'+x.id+'">×</button></div>'}).join('');document.querySelectorAll('.note-del').forEach(function(b){b.onclick=function(e){e.stopPropagation();var id=parseInt(this.dataset.id);var notes=gN().filter(function(x){return x.id!==id});sN(notes);rN()}})}
-document.getElementById('noteAdd').onclick=function(){var inp=document.getElementById('noteInput');var t=inp.value.trim();if(!t)return;var notes=gN();notes.unshift({id:Date.now(),text:t,time:new Date().toISOString()});sN(notes);inp.value='';rN()}
-document.getElementById('noteInput').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('noteAdd').click()});
+function gN(){return SB.from('notes').select('*').order('created_at',{ascending:false}).then(function(r){return r.data||[]}).catch(function(){return[]})}
+function sN(n){return SB.from('notes').insert([n]).then(function(r){if(r.error)throw r.error})}
+function dN(id){return SB.from('notes').delete().eq('id',id).then(function(r){if(r.error)throw r.error})}
+function rN(){gN().then(function(n){var el=document.getElementById('notesGrid');if(!n.length){el.innerHTML='<div class="note-empty">还没有随手记 ✍️</div>';return}el.innerHTML=n.map(function(x){var t=new Date(x.created_at);var ts=t.getMonth()+1+'/'+t.getDate()+' '+String(t.getHours()).padStart(2,'0')+':'+String(t.getMinutes()).padStart(2,'0');return'<div class="note-card"><div class="note-time">'+ts+'</div><div class="note-text">'+x.text+'</div><button class="note-del" data-id="'+x.id+'">×</button></div>'}).join('');document.querySelectorAll('.note-del').forEach(function(b){b.onclick=function(e){e.stopPropagation();dN(parseInt(this.dataset.id)).then(function(){rN()})}})})}
+document.getElementById('noteAdd').onclick=function(){var inp=document.getElementById('noteInput');var t=inp.value.trim();if(!t)return;sN({id:Date.now(),text:t}).then(function(){inp.value='';rN()})}
+
 
 // Music auto-play on first interaction
 var mBtn=document.getElementById('musicBtn'),mAudio=document.getElementById('bgMusic'),mPlaying=false;
@@ -272,8 +276,10 @@ dz.addEventListener('dragover',function(e){e.preventDefault();dz.style.borderCol
 dz.addEventListener('dragleave',function(){dz.style.borderColor=''});
 dz.addEventListener('drop',function(e){e.preventDefault();dz.style.borderColor='';if(e.dataTransfer.files.length)hF(e.dataTransfer.files[0])});
 fi.addEventListener('change',function(){if(this.files.length)hF(this.files[0])});
-function hF(file){if(!file.type.match(/image\//)){tS('请选图片','er');return}var r=new FileReader();r.onload=function(e){pb=e.target.result;pv.src=pb;pv.style.display='block';dz.querySelector('.ic').textContent='✅';dz.querySelector('.tx').textContent=file.name+' ('+Math.round(file.size/1024)+'KB)'};r.readAsDataURL(file)}
-document.getElementById('af').addEventListener('submit',function(e){e.preventDefault();var t=document.getElementById('aT').value.trim(),c=document.getElementById('aC').value.trim();if(!t||!c)return tS('请填写完整','er');if(!pb)return tS('请上传照片','er');var entry={id:Date.now(),date:document.getElementById('aD').value||new Date().toISOString().slice(0,10),title:t,content:c,mood:document.getElementById('aM').value,photoBase64:pb};var d=gD();d.push(entry);sD(d);rD();document.getElementById('aT').value='';document.getElementById('aC').value='';pb='';pv.style.display='none';fi.value='';dz.querySelector('.ic').textContent='📸';dz.querySelector('.tx').textContent='点击或拖拽上传照片';document.getElementById('ao').classList.remove('on');tS('已发布','ok')});
+var upFile=null;
+function hF(file){if(!file.type.match(/image\//)){tS('请选图片','er');return}upFile=file;var r=new FileReader();r.onload=function(e){pv.src=e.target.result;pv.style.display='block';dz.querySelector('.ic').textContent='✅';dz.querySelector('.tx').textContent=file.name+' ('+Math.round(file.size/1024)+'KB)'};r.readAsDataURL(file)}
+document.getElementById('af').addEventListener('submit',async function(e){e.preventDefault();var t=document.getElementById('aT').value.trim(),c=document.getElementById('aC').value.trim();if(!t||!c)return tS('请填写完整','er');if(!upFile)return tS('请上传照片','er');try{var fname=Date.now()+'-'+upFile.name.replace(/[^a-zA-Z0-9._-]/g,'_');var up=await SB.storage.from('photos').upload(fname,upFile,{contentType:upFile.type,upsert:true});if(up.error)throw up.error;var url=SB.storage.from('photos').getPublicUrl(fname).data.publicUrl;var entry={id:Date.now(),date:document.getElementById('aD').value||new Date().toISOString().slice(0,10),title:t,content:c,mood:document.getElementById('aM').value,photo_base64:url};await sD(entry);rD();tS('已发布到云端','ok')}catch(err){tS('上传失败: '+err.message,'er')}
+
 function tS(m,t){var el=document.getElementById('toast');el.textContent=m;el.className='toast '+t+' show';setTimeout(function(){el.classList.remove('show')},2400)}
 
 // Scroll reveal
