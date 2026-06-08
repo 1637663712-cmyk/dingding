@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>丁丁的小世界 · 白色雪纳瑞</title>
 <style>
-:root{--cream:#FDFAF5;--linen:#F5EFE6;--sage:#8CA89C;--sage-light:#E5EDE8;--sage-pale:#F2F7F4;--terracotta:#C4956A;--terracotta-light:#EDD9C8;--warm-gray:#8B7E74;--warm-gray-light:#B8AFA6;--dark:#3C3633;--charcoal:#2C2C2C;--border:#E6DDD2;--border-light:#F0E9DF;--shadow-xs:0 1px 4px rgba(60,54,51,0.04);--shadow-sm:0 2px 12px rgba(60,54,51,0.06);--shadow-md:0 8px 30px rgba(60,54,51,0.08);--shadow-lg:0 16px 48px rgba(60,54,51,0.10);--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--font-cn:'PingFang SC','Hiragino Sans GB','Microsoft YaHei','STSongti-SC','STSong','SimSun',sans-serif;--font-en:'Segoe UI','Helvetica Neue','Arial','PingFang SC',sans-serif;--transition:0.35s cubic-bezier(0.25,0.1,0.25,1)}
+:root{--cream:#FDFAF5;--linen:#F5EFE6;--sage:#8CA89C;--sage-light:#E5EDE8;--sage-pale:#F2F7F4;--terracotta:#C4956A;--terracotta-light:#EDD9C8;--warm-gray:#8B7E74;--warm-gray-light:#B8AFA6;--dark:#3C3633;--charcoal:#2C2C2C;--border:#E6DDD2;--border-light:#F0E9DF;--shadow-xs:0 1px 4px rgba(60,54,51,0.04);--shadow-sm:0 2px 12px rgba(60,54,51,0.06);--shadow-md:0 8px 30px rgba(60,54,51,0.08);--shadow-lg:0 16px 48px rgba(60,54,51,0.10);--radius-sm:10px;--radius-md:16px;--radius-lg:24px;--radius-xl:32px;--font-cn:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;--font-en:'Segoe UI','Helvetica Neue','Arial',sans-serif;--transition:0.35s cubic-bezier(0.25,0.1,0.25,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-height:1.8;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -27,8 +27,6 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
 .nav-toggle span{display:block;width:22px;height:1.5px;background:var(--charcoal);border-radius:1px;transition:var(--transition)}
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;padding:120px 48px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 800px 500px at 80% 20%,rgba(140,168,156,0.08) 0%,transparent 70%),radial-gradient(ellipse 600px 600px at 10% 80%,rgba(196,149,106,0.06) 0%,transparent 60%),linear-gradient(170deg,#FDFAF5 0%,#F6F0E6 40%,#FDFAF5 100%)}
-.hero::before{content:'';position:absolute;top:-180px;right:-120px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(140,168,156,0.07) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-80px;left:-60px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(196,149,106,0.05) 0%,transparent 70%);pointer-events:none}
 .hero-content{flex:1;max-width:520px;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.6);backdrop-filter:blur(8px);border:1px solid var(--border-light);border-radius:40px;padding:6px 18px;font-family:var(--font-en);font-size:.82rem;color:var(--warm-gray);letter-spacing:.06em;margin-bottom:28px}
 .hero-dot{color:var(--sage)}.hero-title{margin-bottom:28px}
@@ -39,15 +37,14 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 .hero-scroll{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--warm-gray-light);animation:floatDown 2.4s ease-in-out infinite;cursor:pointer;text-decoration:none;padding:8px 0}
 @keyframes floatDown{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(8px);opacity:1}}
 .hero-portrait{flex-shrink:0;z-index:1;margin-left:64px}
-.portrait-frame{width:340px;height:420px;border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 8px 32px rgba(60,54,51,0.10),0 2px 8px rgba(60,54,51,0.06);background:var(--linen);position:relative;display:flex;align-items:center;justify-content:center}
-.portrait-inner{text-align:center;color:#FFF;background:linear-gradient(145deg,#F0E6D8 0%,#E4D2BC 40%,#DCC8B0 100%);width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.portrait-emoji{font-size:4.5rem;display:block;margin-bottom:8px}.portrait-text{font-size:.95rem;opacity:.8;letter-spacing:.06em}
+.portrait-frame{width:340px;height:420px;border-radius:var(--radius-xl);overflow:hidden;box-shadow:0 8px 32px rgba(60,54,51,0.10),0 2px 8px rgba(60,54,51,0.06);background:var(--linen);position:relative}
+.portrait-frame img{width:100%;height:100%;object-fit:cover}
 .about{padding:120px 0;background:var(--cream);position:relative}
 .about::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
 .about-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:72px}
 .about-card{background:#FFF;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:36px 20px 28px;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
 .about-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:32px;height:3px;border-radius:0 0 3px 3px;transition:width .3s}
-.about-card:nth-child(1)::before{background:var(--terracotta)}.about-card:nth-child(2)::before{background:var(--sage)}.about-card:nth-child(3)::before{background:#D4A99A}.about-card:nth-child(4)::before{background:#B8AFA6}
+.about-card:nth-child(1)::before{background:var(--terracotta)}.about-card:nth-child(2)::before{background:var(--sage)}.about-card:nth-child(3)::before{background:#D4A99A}.about-card:nth-child(4)::before{background:#B8AFA6}.about-card:nth-child(5)::before{background:var(--sage)}.about-card:nth-child(6)::before{background:var(--terracotta)}.about-card:nth-child(7)::before{background:#D4A99A}.about-card:nth-child(8)::before{background:#B8AFA6}
 .about-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:transparent}.about-card:hover::before{width:48px}
 .about-icon{font-size:2rem;margin-bottom:14px}.about-card h3{font-size:.78rem;color:var(--warm-gray-light);font-weight:400;margin-bottom:10px;text-transform:uppercase;letter-spacing:.12em}
 .about-card p{font-size:1rem;color:var(--charcoal);font-weight:500}.about-note{font-size:.82rem!important;color:var(--warm-gray-light)!important;font-weight:400!important;margin-top:6px}
@@ -55,9 +52,8 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 .gallery{padding:120px 0;background:var(--sage-pale)}.gallery-grid{columns:3;column-gap:18px}
 .gallery-item{break-inside:avoid;margin-bottom:18px;border-radius:var(--radius-sm);overflow:hidden;cursor:pointer;position:relative;background:var(--linen);transition:var(--transition);box-shadow:var(--shadow-xs)}
 .gallery-item:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}.gallery-item img{width:100%;display:block;transition:transform .6s ease}.gallery-item:hover img{transform:scale(1.04)}
-.gallery-item-placeholder{width:100%;min-height:220px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,var(--sage-light),var(--terracotta-light));color:var(--warm-gray);font-size:.9rem}
 .gallery-item-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(44,44,44,0.55));padding:44px 20px 20px;color:#FFF;opacity:0;transition:opacity .35s}
-.gallery-item:hover .gallery-item-overlay{opacity:1}.gallery-item-overlay h4{font-size:.95rem;font-weight:500;margin-bottom:4px}.gallery-item-overlay span{font-size:.78rem;opacity:.8;font-family:var(--font-en)}
+.gallery-item:hover .gallery-item-overlay{opacity:1}.gallery-item-overlay h4{font-size:.95rem;font-weight:500;margin-bottom:4px}
 .lightbox{position:fixed;inset:0;z-index:200;background:rgba(28,28,28,0.95);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
 .lightbox.active{opacity:1;pointer-events:all}.lightbox-close{position:absolute;top:28px;right:36px;background:none;border:none;color:#FFF;font-size:2.4rem;cursor:pointer;opacity:.8;transition:opacity .3s;z-index:10}
 .lightbox-close:hover{opacity:.5}.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#FFF;font-size:2rem;width:48px;height:48px;border-radius:50%;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center;z-index:10}
@@ -110,7 +106,7 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 <p class="hero-desc">一只白色的雪纳瑞，<br>用十四年的时间，<br>教会了全家人什么是无条件的爱。</p>
 <div class="hero-actions"><a href="#about" class="hero-scroll"><span>了解丁丁</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/></svg></a></div>
 </div>
-<div class="hero-portrait"><div class="portrait-frame"><div class="portrait-inner"><span class="portrait-emoji">🐶</span><span class="portrait-text">丁丁的照片</span></div></div></div>
+<div class="hero-portrait"><div class="portrait-frame"><img src="photos/笑.jpg" alt="丁丁"></div></div>
 </section>
 
 <section class="about" id="about">
@@ -119,12 +115,16 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 <div class="about-grid">
 <div class="about-card"><div class="about-icon">🎂</div><h3>生日</h3><p>2012年5月12日</p><p class="about-note">金牛座的小老头</p></div>
 <div class="about-card"><div class="about-icon">🏠</div><h3>家乡</h3><p>中国 · 沈阳</p><p class="about-note">喜欢下雪天</p></div>
-<div class="about-card"><div class="about-icon">🦐</div><h3>最爱</h3><p>虾 + 鸡肉干</p><p class="about-note">美食鉴定家</p></div>
+<div class="about-card"><div class="about-icon">👨‍👩‍👧</div><h3>家庭</h3><p>爸爸 · 妈妈 · 姐姐</p><p class="about-note">幸福的一家</p></div>
+<div class="about-card"><div class="about-icon">🦐</div><h3>最爱食物</h3><p>虾</p><p class="about-note">唯一的最爱</p></div>
+<div class="about-card"><div class="about-icon">🐶</div><h3>品种</h3><p>白色雪纳瑞</p><p class="about-note">迷你型小帅哥</p></div>
 <div class="about-card"><div class="about-icon">🤫</div><h3>小秘密</h3><p>从未恋爱</p><p class="about-note">纯情小处男</p></div>
+<div class="about-card"><div class="about-icon">😴</div><h3>特长</h3><p>打呼噜 + 歪头杀</p><p class="about-note">装无辜十级</p></div>
+<div class="about-card"><div class="about-icon">👧</div><h3>最亲的人</h3><p>姐姐</p><p class="about-note">照片里总在她身边</p></div>
 </div>
 <div class="about-story">
 <p>丁丁来到我们家的时候，只有巴掌大小。一团白色的绒毛，两只黑豆般的眼睛，好奇地打量着这个新世界。十四年了，它从小奶狗变成了胡须泛白的老爷爷，但那种纯真的眼神，从来没有变过。</p>
-<p>这个网站，记录丁丁的每一天。阳光下打盹的午后、雨天后踩出的小梅花印、还有它歪着头听你说话时的可爱模样——这些平凡的瞬间，对我们来说，就是最珍贵的宝藏。</p>
+<p>这个网站，记录丁丁的每一天。阳光下打盹的午后、沈阳踏雪的欢快、还有它歪着头听你说话时的可爱模样——这些平凡的瞬间，对我们来说，就是最珍贵的宝藏。</p>
 </div>
 </div>
 </section>
@@ -143,7 +143,7 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 <button class="lightbox-next" id="lightboxNext">&#8250;</button>
 <div class="lightbox-content">
 <img src="" alt="" id="lightboxImg">
-<div class="lightbox-info"><h3 id="lightboxTitle"></h3><p id="lightboxDate"></p><p id="lightboxDesc"></p></div>
+<div class="lightbox-info"><h3 id="lightboxTitle"></h3><p id="lightboxDesc"></p></div>
 </div>
 </div>
 
@@ -169,30 +169,57 @@ body{font-family:var(--font-cn);background:var(--cream);color:var(--dark);line-h
 <div class="footer-brand"><div class="footer-logo-icon">🐶</div><h3>丁丁的小世界</h3><p>2012 — 永远</p></div>
 <div class="footer-quote"><p>「狗狗的生命比我们短，<br>是因为它们不需要花那么长时间<br>去学会如何爱。」</p></div>
 </div>
-<div class="footer-bottom"><p>© 2026 丁丁的小世界 · 用爱建造</p></div>
+<div class="footer-bottom"><p>© 2026 丁丁的小世界 · dingding.bond</p></div>
 </div>
 </footer>
 
 <button class="back-to-top" id="backToTop"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg></button>
 
 <script>
-var PHOTOS=[{id:1,filename:"photo-01.svg",date:"2024-06-15",title:"夏日午后的阳光",description:"丁丁在阳台晒太阳，微风吹动它白色的毛发，像一朵小小的云。"},{id:2,filename:"photo-02.svg",date:"2024-08-20",title:"公园散步记",description:"每天傍晚的散步是丁丁最期待的时刻，今天在草地上打了三个滚。"},{id:3,filename:"photo-03.svg",date:"2024-10-01",title:"国庆节的盛装",description:"给它系上了一条小红领巾，丁丁看起来格外精神，像个老干部。"},{id:4,filename:"photo-04.svg",date:"2026-05-12",title:"十四岁生日",description:"丁丁的14岁生日派对！特制狗狗蛋糕，它还许了个愿。"},{id:5,filename:"photo-05.svg",date:"2025-01-28",title:"除夕夜的陪伴",description:"全家围坐在一起，丁丁安静地趴在脚边，是年夜饭最忠实的观众。"},{id:6,filename:"photo-06.svg",date:"2025-03-15",title:"春天来了",description:"小区里的花开了，丁丁在花丛中嗅来嗅去，鼻子上沾了花粉。"}];
-var DIARY=[{id:1,date:"2025-06-01",title:"今天丁丁当哥哥了",content:"邻居家新来了一只小奶狗，丁丁看着它，眼神里满是慈祥。虽然已经14岁了，但那一刻它像个温柔的大哥哥，耐心地让小奶狗围着它转。我突然意识到，丁丁陪伴我们的时间比很多朋友都要长。",mood:"温暖"},{id:2,date:"2025-05-20",title:"520特别篇",content:"丁丁今天收到了它的第一份「情书」——小区里那只叫豆豆的泰迪的主人说，豆豆每次路过我们家都舍不得走。丁丁对此的回应是：舔了舔自己的爪子，继续睡觉。高冷的雪纳瑞不需要爱情。",mood:"有趣"},{id:3,date:"2025-04-15",title:"体检全绿灯",content:"带丁丁去医院做年度体检，所有指标都正常。医生说以14岁的年纪来说，丁丁的健康状况非常好。出了医院，丁丁兴奋地蹦了三下，好像在说：看吧，我还能再陪你们好多年。",mood:"感恩"},{id:4,date:"2025-03-01",title:"丁丁的早晨仪式",content:"每天早上7点，丁丁会准时用鼻子拱我的手。如果我赖床，它就会发出小小的「呜——」声。十四年如一日，比闹钟还准。有时候想，不是我们在照顾丁丁，是丁丁在用它的方式守护着我们的每一天。",mood:"日常"},{id:5,date:"2025-01-01",title:"新年愿望",content:"跨年的烟花响起时，丁丁有点害怕，缩在我怀里。我抱着这团白色的小毛球，许下新年愿望：希望丁丁健健康康，慢一点变老。丁丁抬起头舔了舔我的下巴，好像在说「知道了」。",mood:"感动"}];
-var MOMENTS=[{id:1,text:"丁丁有一个专属的小枕头，走到哪叼到哪，那是它刚来家时我们给的第一个礼物。"},{id:2,text:"快递员来敲门的时候，丁丁会用三种不同的声调叫：警告、询问、然后就是「咦好像是熟人」。"},{id:3,text:"每次洗澡都是一场战争，但吹干后它会在客厅里疯狂跑圈，像一个白色的闪电。"},{id:4,text:"丁丁听得懂「散步」和「吃肉」，听到这两个词的时候，它的耳朵会瞬间竖起来。"},{id:5,text:"下雪天，白色的丁丁在白色的雪地里，只看得见两只黑眼睛和一颗黑鼻子。我们找了好久。"},{id:6,text:"丁丁睡觉的时候偶尔会「跑」，四肢轻轻划动，大概在梦里追着一只永远追不上的松鼠。"}];
+var PHOTOS=[
+{filename:"笑.jpg",title:"丁丁的微笑",desc:"雪纳瑞特有的治愈笑容，看一眼心都化了"},
+{filename:"跟姐姐.jpg",title:"和姐姐在一起",desc:"姐姐是丁丁最亲近的人，照片里的女孩就是姐姐"},
+{filename:"丁丁和姐姐.JPG",title:"丁丁和姐姐",desc:"最好的陪伴，就是你在身边"},
+{filename:"丁丁和姐姐（过年时）.JPG",title:"过年的温暖",desc:"春节时和姐姐一起，喜气洋洋"},
+{filename:"丁丁踏雪.JPG",title:"雪中漫步",desc:"沈阳的冬天，丁丁最爱的下雪天"},
+{filename:"穿冬天的新衣服.jpg",title:"冬天的新衣服",desc:"穿上新衣服的丁丁，帅气得不得了"},
+{filename:"准备洗澡.JPG",title:"洗澡前的眼神",desc:"每次洗澡前都要用这个眼神求饶"},
+{filename:"刚睡醒.JPG",title:"刚睡醒的丁丁",desc:"睡眼惺忪，毛发乱糟糟的可爱模样"},
+{filename:"打哈欠.jpg",title:"一个大哈欠",desc:"一个哈欠能打十秒钟，舌头卷成小花"},
+{filename:"慵懒的午觉.jpg",title:"慵懒的午觉",desc:"十四岁的老爷爷，最爱晒太阳打盹"},
+{filename:"惬意.jpg",title:"惬意时光",desc:"享受属于自己的宁静午后"},
+{filename:"回眸.jpg",title:"回眸一瞬",desc:"每次叫它的名字，都会这样回头看你"},
+{filename:"盯.jpg",title:"目不转睛",desc:"大概是看到虾了，眼神里全是渴望"},
+{filename:"毛躁的时候.jpg",title:"毛躁的时候",desc:"偶尔也有小脾气，毛发都炸起来了"},
+{filename:"去外婆家.jpg",title:"去外婆家",desc:"最喜欢去外婆家串门，一路小跑不回头"},
+{filename:"好朋友小黄.jpg",title:"好朋友小黄",desc:"和小黄在一起的快乐时光"}
+];
+var DIARY=[
+{id:1,date:"2025-06-01",title:"今天丁丁当哥哥了",content:"邻居家新来了一只小奶狗，丁丁看着它，眼神里满是慈祥。虽然已经14岁了，但那一刻它像个温柔的大哥哥，耐心地让小奶狗围着它转。",mood:"温暖"},
+{id:2,date:"2025-05-20",title:"520特别篇",content:"丁丁今天收到了它的第一份「情书」——小区里那只叫豆豆的泰迪的主人说，豆豆每次路过我们家都舍不得走。丁丁对此的回应是：舔了舔自己的爪子，继续睡觉。高冷的雪纳瑞不需要爱情。",mood:"有趣"},
+{id:3,date:"2025-04-15",title:"体检全绿灯",content:"带丁丁去医院做年度体检，所有指标都正常。医生说以14岁的年纪来说，丁丁的健康状况非常好。出了医院，丁丁兴奋地蹦了三下，好像在说：看吧，我还能再陪你们好多年。",mood:"感恩"},
+{id:4,date:"2025-03-01",title:"丁丁的早晨仪式",content:"每天早上7点，丁丁会准时用鼻子拱姐姐的手。如果赖床，它就会发出小小的「呜——」声。十四年如一日，比闹钟还准。",mood:"日常"},
+{id:5,date:"2025-01-01",title:"新年愿望",content:"跨年的烟花响起时，丁丁有点害怕，缩在姐姐怀里。我们抱着这团白色的小毛球，许下新年愿望：希望丁丁健健康康，慢一点变老。",mood:"感动"}
+];
+var MOMENTS=[
+{id:1,text:"丁丁有一个专属的小枕头，走到哪叼到哪，那是它刚来家时我们给的第一个礼物。"},
+{id:2,text:"快递员来敲门的时候，丁丁会用三种不同的声调叫：警告、询问、然后就是「咦好像是熟人」。"},
+{id:3,text:"每次洗澡都是一场战争，但吹干后它会在客厅里疯狂跑圈，像一个白色的闪电。"},
+{id:4,text:"丁丁听得懂「散步」和「吃虾」，听到这两个词的时候，它的耳朵会瞬间竖起来。"},
+{id:5,text:"下雪天，白色的丁丁在白色的雪地里，只看得见两只黑眼睛和一颗黑鼻子。"},
+{id:6,text:"丁丁睡觉的时候偶尔会「跑」，四肢轻轻划动，大概在梦里追着一只永远追不上的松鼠。"}
+];
 
 // 照片墙
-(function(){var d=PHOTOS;d.sort(function(a,b){return new Date(b.date)-new Date(a.date)});var g=document.getElementById('galleryGrid');g.innerHTML=d.map(function(p,i){return'<div class="gallery-item" data-index="'+i+'" onclick="openLb('+i+')"><img src="photos/'+p.filename+'" alt="'+p.title+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="gallery-item-placeholder" style="display:none">🐶 '+p.title+'</div><div class="gallery-item-overlay"><h4>'+p.title+'</h4><span>'+fd(p.date)+'</span></div></div>'}).join('');})();
+(function(){var g=document.getElementById('galleryGrid');g.innerHTML=PHOTOS.map(function(p,i){return'<div class="gallery-item" data-index="'+i+'" onclick="openLb('+i+')"><img src="photos/'+encodeURI(p.filename)+'" alt="'+p.title+'" loading="lazy"><div class="gallery-item-overlay"><h4>'+p.title+'</h4></div></div>'}).join('');})();
 var ci=0;
 function openLb(i){ci=i;ulb();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden'}
 function closeLb(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
 function prevP(){ci=(ci-1+PHOTOS.length)%PHOTOS.length;ulb()}
 function nextP(){ci=(ci+1)%PHOTOS.length;ulb()}
-function ulb(){var p=PHOTOS[ci];var img=document.getElementById('lightboxImg');img.style.opacity='0';setTimeout(function(){img.src='photos/'+p.filename;img.alt=p.title;img.onerror=function(){img.style.display='none'};img.onload=function(){img.style.display='';img.style.opacity='1'}},180);document.getElementById('lightboxTitle').textContent=p.title;document.getElementById('lightboxDate').textContent=fd(p.date);document.getElementById('lightboxDesc').textContent=p.description||''}
-function fd(s){var d=new Date(s);return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日'}
+function ulb(){var p=PHOTOS[ci];var img=document.getElementById('lightboxImg');img.style.opacity='0';setTimeout(function(){img.src='photos/'+encodeURI(p.filename);img.alt=p.title;img.onload=function(){img.style.opacity='1'}},180);document.getElementById('lightboxTitle').textContent=p.title;document.getElementById('lightboxDesc').textContent=p.desc||''}
 document.addEventListener('keydown',function(e){var lb=document.getElementById('lightbox');if(!lb.classList.contains('active'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')prevP();if(e.key==='ArrowRight')nextP()});
-document.getElementById('lightboxClose').onclick=closeLb;
-document.getElementById('lightboxPrev').onclick=prevP;
-document.getElementById('lightboxNext').onclick=nextP;
+document.getElementById('lightboxClose').onclick=closeLb;document.getElementById('lightboxPrev').onclick=prevP;document.getElementById('lightboxNext').onclick=nextP;
 
 // 日记
 (function(){var e=DIARY;e.sort(function(a,b){return new Date(b.date)-new Date(a.date)});document.getElementById('diaryTimeline').innerHTML=e.map(function(en){return'<div class="diary-entry reveal"><div class="diary-date">'+fdd(en.date)+'</div><h3>'+en.title+'</h3><p>'+en.content+'</p>'+(en.mood?'<span class="diary-mood">'+en.mood+'</span>':'')+'</div>'}).join('');})();
@@ -207,7 +234,7 @@ function fdd(s){var d=new Date(s);return d.getFullYear()+' . '+String(d.getMonth
 // 回到顶部
 (function(){var b=document.getElementById('backToTop');window.addEventListener('scroll',function(){b.classList.toggle('visible',window.scrollY>600)});b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();
 
-// 滚动显示
+// 滚动动画
 (function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');o.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)})},100)})();
 </script>
 </body>
