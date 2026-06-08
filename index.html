@@ -10,8 +10,8 @@
 --pink:#E91E63;--pink-glow:rgba(233,30,99,0.12);--hotpink:#F06292;
 --rose:#D81B60;--rose-light:#F48FB1;--gold:#FF80AB;
 --text:#2D1B25;--muted:#7A5A6A;--faint:#B8909C;
---font:'PingFang SC','Microsoft YaHei','Comic Sans MS',cursive,sans-serif;
---serif:'PingFang SC','Microsoft YaHei','Comic Sans MS',cursive,sans-serif;
+--font:'STHupo','STCaiyun','PingFang SC','Microsoft YaHei',cursive,sans-serif;
+--serif:'STHupo','STCaiyun','PingFang SC','Microsoft YaHei',cursive,sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -295,7 +295,10 @@ function tS(m,t){var el=document.getElementById('toast');el.textContent=m;el.cla
 
 // ── Music ──
 var mBtn=document.getElementById('musicBtn'),mAudio=document.getElementById('bgMusic'),mPlaying=false;
-mBtn.onclick=function(){if(mPlaying){mAudio.pause();mBtn.textContent='🎵';mBtn.classList.remove('playing');mPlaying=false}else{mAudio.play().then(function(){mBtn.textContent='🎶';mBtn.classList.add('playing');mPlaying=true}).catch(function(){tS('未找到音乐文件，请将MP3放入photos/bg-music.mp3','er')})}};
+function playM(){mAudio.play().then(function(){mBtn.textContent='🎶';mBtn.classList.add('playing');mPlaying=true}).catch(function(){})}
+mAudio.volume=0.5;
+document.addEventListener('click',function(){if(!mPlaying)playM()},{once:true});
+mBtn.onclick=function(){if(mPlaying){mAudio.pause();mBtn.textContent='🎵';mBtn.classList.remove('playing');mPlaying=false}else{playM()}};
 
 rD();rN();
 </script>
