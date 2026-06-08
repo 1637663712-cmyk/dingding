@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>丁丁的小世界</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@chinese-fonts/zkkl@1.3.0/dist/ZCOOLKuaiLe-Regular/result.css">
+<style>@font-face{font-family:'ZK';src:url('https://npm.elemecdn.com/@chinese-fonts/zkkl@1.3.0/dist/ZCOOLKuaiLe-Regular/ZCOOLKuaiLe-Regular.woff2') format('woff2');font-display:swap}</style>
 <style>
 :root{
 --bg:#FCE4EC;--surface:#F8BBD0;--card:#FFF;--border:#F0C4D4;
 --pink:#E91E63;--pink-glow:rgba(233,30,99,0.12);--hotpink:#F06292;
 --rose:#D81B60;--rose-light:#F48FB1;--gold:#FF80AB;
 --text:#2D1B25;--muted:#7A5A6A;--faint:#B8909C;
---font:'ZCOOL KuaiLe','DFPHeiBold','PingFang SC','Microsoft YaHei',sans-serif;
---serif:'ZCOOL KuaiLe','DFPHeiBold','PingFang SC','Microsoft YaHei',sans-serif;
+--font:'ZK','ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',sans-serif;
+--serif:'ZK','ZCOOL KuaiLe','PingFang SC','Microsoft YaHei',sans-serif;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -114,6 +114,7 @@ img{display:block;max-width:100%}
 .note-card:hover .note-del{opacity:1}
 .note-card .note-del:hover{color:var(--pink)}
 @keyframes popIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+@keyframes glow{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
 .note-empty{grid-column:1/-1;text-align:center;color:var(--faint);padding:40px;font-size:.9rem}
 
 /* ── Footer ── */
@@ -213,7 +214,8 @@ img{display:block;max-width:100%}
 
 <footer class="footer">
 <div class="sz" style="border-radius:50%;overflow:hidden;opacity:.7"><img src="photos/头像.PNG" alt="丁丁" style="width:100%;height:100%;object-fit:cover"></div>
-<h4>丁丁的小世界</h4>
+<h4>丁丁的小世界</h4><p style="font-size:.82rem;opacity:.5;margin-top:2px">2012 — 永远</p>
+<div style="margin-top:20px;font-family:var(--serif);font-size:1rem;color:var(--hotpink);letter-spacing:.04em;font-style:italic;animation:glow 3s ease-in-out infinite">🎵 you are my sunshine, my only sunshine 🎵</div>
 <div class="copy">© 2026 丁丁的小世界 · dingding.bond</div>
 </footer>
 
