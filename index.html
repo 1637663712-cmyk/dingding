@@ -267,9 +267,8 @@ document.addEventListener('click',function(){if(!mPlaying)playM()},{once:true});
 mBtn.onclick=function(e){e.stopPropagation();if(mPlaying){mAudio.pause();mBtn.textContent='🎵';mBtn.classList.remove('playing');mPlaying=false}else{playM()}};
 
 // Admin (5-click logo)
-var SITE_PW='200096';
-function isUnlocked(){return localStorage.getItem('dd_pw')===SITE_PW}
-function checkPw(){if(document.getElementById('pwIn').value===SITE_PW){localStorage.setItem('dd_pw',SITE_PW);document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';if(window._pwCb){var cb=window._pwCb;window._pwCb=null;cb()}}else{document.getElementById('pwErr').style.display='block'}}
+function isUnlocked(){return localStorage.getItem('dd_pw')==='ok'}
+function checkPw(){var pw=document.getElementById('pwIn').value;if(!SB)return;SB.rpc('verify_pw',{pw:pw}).then(function(r){if(r.data===true){localStorage.setItem('dd_pw','ok');document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';if(window._pwCb){var cb=window._pwCb;window._pwCb=null;cb()}}else{document.getElementById('pwErr').style.display='block'}}).catch(function(){document.getElementById('pwErr').style.display='block'})}
 function closePw(){document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';window._pwCb=null}
 var lc=0;
 document.getElementById('logoBtn').addEventListener('click',function(e){lc++;if(lc>=5){lc=0;if(isUnlocked())oA();else{document.getElementById("pwOl").classList.add("on");document.getElementById("pwIn").focus();window._pwCb=function(){oA()}}}setTimeout(function(){lc=0},2000)});
