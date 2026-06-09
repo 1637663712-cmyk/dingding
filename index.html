@@ -115,7 +115,6 @@ img{display:block;max-width:100%}
 .note-card:hover .note-del{opacity:1}.note-card .note-del:hover{color:var(--pink)}
 .note-empty{grid-column:1/-1;text-align:center;color:var(--faint);padding:40px;font-size:.85rem}
 
-.nav-lock{background:none;border:1.5px solid var(--border);color:var(--faint);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:.85rem;transition:all .3s;display:flex;align-items:center;justify-content:center;margin-left:8px}.nav-lock:hover{border-color:var(--pink);color:var(--pink)}.nav-lock.unlocked{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 8px var(--cyan-glow)}.pw-ol{position:fixed;inset:0;z-index:350;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}.pw-ol.on{opacity:1;pointer-events:all}.pw-bx{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px;text-align:center;width:300px}.pw-bx h3{font-size:1.1rem;margin-bottom:4px}.pw-bx p{font-size:.75rem;color:var(--faint);margin-bottom:16px}.pw-bx input{width:100%;padding:11px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:.9rem;font-family:var(--font);text-align:center;outline:none}.pw-bx input:focus{border-color:var(--cyan)}.pw-bx .pw-err{font-size:.7rem;color:var(--pink);margin-top:8px;display:none}
 /* ── Music ── */
 .music-btn{position:fixed;bottom:28px;left:28px;z-index:90;width:44px;height:44px;border-radius:50%;background:var(--card);border:1.5px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .3s;animation:float 3s ease-in-out infinite}
 .music-btn:hover{border-color:var(--cyan);box-shadow:0 0 20px var(--cyan-glow)}
@@ -166,7 +165,7 @@ img{display:block;max-width:100%}
 <nav class="nav">
 <div class="nav-inner">
 <a href="#home" class="nav-logo" id="logoBtn"><span class="sz"><img src="photos/头像.PNG" alt="丁丁"></span>丁丁</a>
-<ul class="nav-links"><li><a href="#about">关于</a></li><li><a href="#diary">日记</a></li><li><a href="#notes">随手记</a></li></ul><button class="nav-lock" id="lockBtn" title="解锁">🔒</button>
+<ul class="nav-links"><li><a href="#about">关于</a></li><li><a href="#diary">日记</a></li><li><a href="#notes">随手记</a></li></ul>
 </div>
 </nav>
 
@@ -270,10 +269,8 @@ mBtn.onclick=function(e){e.stopPropagation();if(mPlaying){mAudio.pause();mBtn.te
 // Admin (5-click logo)
 var SITE_PW='200096';
 function isUnlocked(){return localStorage.getItem('dd_pw')===SITE_PW}
-function checkPw(){if(document.getElementById('pwIn').value===SITE_PW){localStorage.setItem('dd_pw',SITE_PW);updateLock();document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';if(window._pwCb){var cb=window._pwCb;window._pwCb=null;cb()}}else{document.getElementById('pwErr').style.display='block'}}
+function checkPw(){if(document.getElementById('pwIn').value===SITE_PW){localStorage.setItem('dd_pw',SITE_PW);document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';if(window._pwCb){var cb=window._pwCb;window._pwCb=null;cb()}}else{document.getElementById('pwErr').style.display='block'}}
 function closePw(){document.getElementById('pwOl').classList.remove('on');document.getElementById('pwIn').value='';window._pwCb=null}
-function updateLock(){var b=document.getElementById('lockBtn');if(isUnlocked()){b.textContent='🔓';b.classList.add('unlocked');b.title='已解锁'}else{b.textContent='🔒';b.classList.remove('unlocked');b.title='解锁'}}
-document.getElementById('lockBtn').onclick=function(){if(isUnlocked()){localStorage.removeItem('dd_pw');updateLock()}else{document.getElementById('pwOl').classList.add('on');document.getElementById('pwIn').focus();window._pwCb=function(){updateLock()}}};
 var lc=0;
 document.getElementById('logoBtn').addEventListener('click',function(e){lc++;if(lc>=5){lc=0;if(isUnlocked())oA();else{document.getElementById("pwOl").classList.add("on");document.getElementById("pwIn").focus();window._pwCb=function(){oA()}}}setTimeout(function(){lc=0},2000)});
 function oA(){document.getElementById('ao').classList.add('on');document.getElementById('aD').value=new Date().toISOString().slice(0,10)}
@@ -292,7 +289,7 @@ document.getElementById('af').addEventListener('submit',async function(e){e.prev
 function tS(m,t){var el=document.getElementById('toast');el.textContent=m;el.className='toast '+t+' show';setTimeout(function(){el.classList.remove('show')},2400)}
 
 // Scroll reveal
-(function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)});updateLock();rD();rN()})();
+(function(){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target)}})},{threshold:.1});document.querySelectorAll('.reveal').forEach(function(el){o.observe(el)});rD();rN()})();
 </script>
 </body>
 </html>
